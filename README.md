@@ -16,5 +16,6 @@ open http://localhost:8008/mandelbrot.html
 
 ![Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/mandelbrot-set-grayscale.png) 
 
+[Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [Yarn]: https://yarnpkg.com/
