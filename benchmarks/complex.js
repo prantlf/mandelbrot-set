@@ -30,12 +30,16 @@ function iterationsToLeaveMandelbrotSet2 (cr, ci) {
   let iterations = 1
   let zr = 0
   let zi = 0
+  let zr2 = 0
+  let zi2 = 0
   do {
-    const z2r = zr * zr - zi * zi
+    const z2r = zr2 - zi2
     const z2i = 2 * zr * zi
     zr = z2r + cr
     zi = z2i + ci
-  } while (zr * zr + zi * zi <= 4 && ++iterations < maximumIterations)
+    zr2 = zr * zr
+    zi2 = zi * zi
+  } while (zr2 + zi2 <= 4 && ++iterations < maximumIterations)
 }
 
 function testObjects () {
