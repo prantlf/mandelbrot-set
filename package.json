@@ -26,11 +26,13 @@
     "node": ">=8"
   },
   "scripts": {
+    "benchmark": "node benchmarks/hsx2rgb && node benchmarks/complex",
     "lint": "standard --verbose",
     "lint:fix": "standard --verbose --fix",
     "start": "node server"
   },
   "devDependencies": {
+    "benchmark": "2.1.4",
     "connect": "3.6.6",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.16.0",
