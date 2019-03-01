@@ -14,7 +14,12 @@ npm start
 open http://localhost:8008/mandelbrot.html
 ```
 
-![Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/mandelbrot-set-grayscale.png) 
+Examples
+--------
+
+![Grayscale Full Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/mandelbrot-set-grayscale-full.png) 
+
+![Fiery Detail Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/mandelbrot-set-fiery-detail.png) 
 
 [Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.com/
