@@ -9,6 +9,14 @@
       "request": "launch",
       "name": "Launch Chrome",
       "url": "http://localhost:8008/mandelbrot.html",
+      "webRoot": "${workspaceFolder}/pages",
+      "preLaunchTask": "Run Server"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Attach Chrome",
+      "url": "http://localhost:8008/mandelbrot.html",
       "webRoot": "${workspaceFolder}/pages"
     }
   ]
