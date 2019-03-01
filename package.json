@@ -27,7 +27,8 @@
   },
   "scripts": {
     "lint": "standard --verbose",
-    "lint:fix": "standard --verbose --fix"
+    "lint:fix": "standard --verbose --fix",
+    "start": "node server"
   },
   "devDependencies": {
     "connect": "3.6.6",
@@ -44,5 +45,6 @@
   "keywords": [
     "mandelbrot-set",
     "mandelbrot"
-  ]
+  ],
+  "dependencies": {}
 }
