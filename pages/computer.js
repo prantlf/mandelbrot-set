@@ -1,22 +1,34 @@
 // See https://en.wikipedia.org/wiki/Mandelbrot_set.
 
-/* global absoluteValue2, add, addEventListener, importScripts,
-   power2, postMessage */
-
-importScripts('./complex.js')
+/* global addEventListener, postMessage */
 
 let maximumIterations
 
 // Computes z := z^2 + c until |z| > 2. Returns the count of
 // iterations run checking if the Mandelbrot set contains c.
-function iterationsToLeaveMandelbrotSet (c) {
+function iterationsToLeaveMandelbrotSet (cr, ci) {
   let iterations = 1
-  let z = { r: 0, i: 0 }
-  // z = c
-  // c = { r: 0.5, i: 0.5 }
+  // Complex number z to compute recursively
+  let zr = 0
+  let zi = 0
+  // Local variables to store parts of the computation of z^2,
+  // so that they cxan be reused for the computation of |z|.
+  // They are zr^2 and zi^2.
+  let zr2 = 0
+  let zi2 = 0
   do {
-    z = add(power2(z), c)
-  } while (absoluteValue2(z) <= 4 && ++iterations < maximumIterations)
+    // Compute z^2 := (zr * zr - zi * zi) + (2 * zr * zi)i
+    const z2r = zr2 - zi2
+    const z2i = 2 * zr * zi
+    // Compute the new z := z^2 + c
+    zr = z2r + cr
+    zi = z2i + ci
+    // Store square powers of zr and zi to compute |z| and z^2
+    zr2 = zr * zr
+    zi2 = zi * zi
+    // Check the condition of Mandelbrot set |z| <= 2 more
+    // efficiently by comaring z^2 <= 4.
+  } while (zr2 + zi2 <= 4 && ++iterations < maximumIterations)
   return iterations
 }
 
@@ -42,7 +54,7 @@ function computeIterations (width, height, { x: offsetX, y: offsetY }, scale) {
     // Start with the initial x-coordinate.
     let r = startR
     for (let x = 0; x < width; ++x) {
-      iterations[row + x] = iterationsToLeaveMandelbrotSet({ r, i })
+      iterations[row + x] = iterationsToLeaveMandelbrotSet(r, i)
       // Advance to the next pixel to compute the iterations for.
       r += deltaR
     }
