@@ -1,3 +1,5 @@
+/* global addEventListener, Worker */
+
 import { hsl2rgb } from './colours.js'
 
 let maximumIterations

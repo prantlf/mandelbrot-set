@@ -1,6 +1,8 @@
 // See https://en.wikipedia.org/wiki/Mandelbrot_set.
 
-// import { add, power2, absoluteValue } from './complex.js'
+/* global absoluteValue2, add, addEventListener, importScripts,
+   power2, postMessage */
+
 importScripts('./complex.js')
 
 let maximumIterations
