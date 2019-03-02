@@ -1,4 +1,4 @@
-<div id="main">
+const main = `<div id="main">
   <form id="settings">
     <label for="iterations">Maximum iterations:</label>
     <input id="iterations" type="number" value="20">
@@ -25,4 +25,6 @@
     <button type="submit" class="button">Apply</button>
   </form>
   <canvas id="graph"></canvas>
-</div>
+</div>`
+
+export { main }

@@ -1,5 +1,6 @@
 /* global addEventListener, Worker */
 
+import { main } from './main.js'
 import { hsl2rgb } from './colours.js'
 
 let maximumIterations
@@ -118,10 +119,10 @@ class Renderer {
   }
 
   importTemplate () {
-    const link = document.querySelector('link[rel="import"]')
-    const content = link.import.getElementById('main')
+    const template = document.createElement('template')
+    template.innerHTML = main
     const script = document.body.querySelector('script')
-    document.body.insertBefore(content, script)
+    document.body.insertBefore(template.content, script)
   }
 
   initializePage () {
