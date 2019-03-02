@@ -4,6 +4,7 @@ import { hsl2rgb } from './colours.js'
 
 let maximumIterations
 let colour
+let size
 let width
 let height
 let offset
@@ -35,10 +36,6 @@ function renderGraph (iterations) {
   }
   context.putImageData(image, 0, 0)
   console.timeEnd(message)
-}
-
-function requestGraph () {
-  computer.postMessage({ maximumIterations, width, height, offset, scale })
 }
 
 function receiveGraph ({ data }) {
@@ -76,40 +73,67 @@ function generatePalette () {
   console.timeEnd(message)
 }
 
-function refreshGraph () {
-  colour = document.querySelector('input[name="colour"]:checked').id.substr(7)
-
-  const canvas = getElement('graph')
-  const size = +getElement('size').value
-  canvas.style.width = canvas.style.height = `${size}px`
-  context = canvas.getContext('2d', { alpha: false })
-  width = context.canvas.width
-  height = context.canvas.height
-  context.clearRect(0, 0, width, height)
-
-  maximumIterations = +getElement('iterations').value
-  const x = +getElement('offset-x').value
-  const y = +getElement('offset-y').value
-  offset = { x, y }
-  scale = +getElement('scale').value
-
-  generatePalette()
-  requestGraph()
-}
-
-function applySettings (event) {
-  event.preventDefault()
-  refreshGraph()
-}
-
-function initializePage () {
-  const form = getElement('settings')
-  form.addEventListener('submit', applySettings)
-
-  refreshGraph()
-}
-
 const computer = new Worker('./computer.js')
 computer.addEventListener('message', receiveGraph)
 
-addEventListener('DOMContentLoaded', initializePage)
+class Renderer {
+  getParameters () {
+    return { maximumIterations, width, height, offset, scale }
+  }
+
+  requestGraph () {
+    const parameters = this.getParameters()
+    computer.postMessage(parameters)
+  }
+
+  readSettings () {
+    colour = document.querySelector('input[name="colour"]:checked').id.substr(7)
+    size = +getElement('size').value
+    maximumIterations = +getElement('iterations').value
+    const x = +getElement('offset-x').value
+    const y = +getElement('offset-y').value
+    offset = { x, y }
+    scale = +getElement('scale').value
+  }
+
+  prepareCanvas () {
+    const canvas = getElement('graph')
+    canvas.style.width = canvas.style.height = `${size}px`
+    context = canvas.getContext('2d', { alpha: false })
+    width = context.canvas.width
+    height = context.canvas.height
+    context.clearRect(0, 0, width, height)
+  }
+
+  refreshGraph () {
+    this.readSettings()
+    this.prepareCanvas()
+    generatePalette()
+    this.requestGraph()
+  }
+
+  applySettings (event) {
+    event.preventDefault()
+    this.refreshGraph()
+  }
+
+  importTemplate () {
+    const link = document.querySelector('link[rel="import"]')
+    const content = link.import.getElementById('main')
+    const script = document.body.querySelector('script')
+    document.body.insertBefore(content, script)
+  }
+
+  initializePage () {
+    this.importTemplate()
+    const form = getElement('settings')
+    form.addEventListener('submit', this.applySettings.bind(this))
+    this.refreshGraph()
+  }
+
+  initialize () {
+    addEventListener('DOMContentLoaded', this.initializePage.bind(this))
+  }
+}
+
+export { Renderer, getElement }

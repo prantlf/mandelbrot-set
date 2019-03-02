@@ -1,0 +1,28 @@
+<div id="main">
+  <form id="settings">
+    <label for="iterations">Maximum iterations:</label>
+    <input id="iterations" type="number" value="20">
+    <fieldset>
+      <legend>Colour palette</legend>
+      <input id="colour-grayscale" type="radio" name="colour" checked>
+      <label for="colour-grayscale">Grayscale</label>
+      <input id="colour-fiery" type="radio" name="colour">
+      <label for="colour-fiery">Fiery</label>
+      <input id="colour-rainbow" type="radio" name="colour">
+      <label for="colour-rainbow">Rainbow</label>
+    </fieldset>
+    <label for="size">Size [px]:</label>
+    <input id="size" type="number" value="400">
+    <label for="scale">Scale:</label>
+    <input id="scale" type="number" value="1" step="any">
+    <fieldset>
+      <legend>Offset from the top-left corner [px]</legend>
+      <label for="offset-x">X:</label>
+      <input id="offset-x" type="number" value="0" step="any">
+      <label for="offset-y">Y:</label>
+      <input id="offset-y" type="number" value="0" step="any">
+    </fieldset>
+    <button type="submit" class="button">Apply</button>
+  </form>
+  <canvas id="graph"></canvas>
+</div>

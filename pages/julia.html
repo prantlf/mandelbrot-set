@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Renders Julia sets in colour.">
+  <title>Julia Set</title>
+  <link rel="stylesheet" href="mini-default.min.css" />
+  <link rel="stylesheet" href="mandelbrot.css" />
+  <link rel="import" href="main.html">
+</head>
+<body>
+  <h1>Julia Set</h1>
+  <script src="julia.js" type="module"></script>
+  <template id="form-part">
+    <fieldset>
+      <legend>Constant for the Julia set [X + Yi]</legend>
+      <label for="k-r">X:</label>
+      <input id="k-r" type="number" value="0.4" step="any">
+      <label for="k-i">Y:</label>
+      <input id="k-i" type="number" value="0.4" step="any">
+    </fieldset>
+  </template>
+</body>
+</html>
