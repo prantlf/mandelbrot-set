@@ -2,49 +2,49 @@ const createSuite = require('./createSuite')
 const size = 200
 
 function testNumber () {
-  var array = new Array(size)
+  const array = new Array(size)
   for (let i = 0; i < size; ++i) {
     array[i] = i
   }
 }
 
 function testUint8 () {
-  var array = new Uint8Array(size)
+  const array = new Uint8Array(size)
   for (let i = 0; i < size; ++i) {
     array[i] = i
   }
 }
 
 function testUint16 () {
-  var array = new Uint16Array(size)
+  const array = new Uint16Array(size)
   for (let i = 0; i < size; ++i) {
     array[i] = i
   }
 }
 
 function testUint32 () {
-  var array = new Uint32Array(size)
+  const array = new Uint32Array(size)
   for (let i = 0; i < size; ++i) {
     array[i] = i
   }
 }
 
 function testInt8 () {
-  var array = new Int8Array(size)
+  const array = new Int8Array(size)
   for (let i = 0; i < size; ++i) {
     array[i] = i
   }
 }
 
 function testInt16 () {
-  var array = new Int16Array(size)
+  const array = new Int16Array(size)
   for (let i = 0; i < size; ++i) {
     array[i] = i
   }
 }
 
 function testInt32 () {
-  var array = new Int32Array(size)
+  const array = new Int32Array(size)
   for (let i = 0; i < size; ++i) {
     array[i] = i
   }

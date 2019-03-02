@@ -27,10 +27,10 @@ function renderGraph (iterations) {
     for (let x = 0; x < width; ++x) {
       const pixel = (row + x) * 4
       const count = iterations[row + x]
-      const [ r, g, b ] = palette[count]
-      data[pixel] = r
-      data[pixel + 1] = g
-      data[pixel + 2] = b
+      const index = (count - 1) * 3
+      data[pixel] = palette[index]
+      data[pixel + 1] = palette[index + 1]
+      data[pixel + 2] = palette[index + 2]
       data[pixel + 3] = 255
     }
     row += width
@@ -47,13 +47,14 @@ function receiveGraph ({ data }) {
 function generatePalette () {
   const message = `Generating palette of ${maximumIterations} colours.`
   console.time(message)
-  palette = new Array(maximumIterations)
+  const length = maximumIterations * 3
+  palette = new Array(length)
   if (colour === 'grayscale') {
     const step = 256 / maximumIterations
     let intensity = 255
-    for (let iteration = 1; iteration <= maximumIterations; ++iteration) {
+    for (let i = 0; i < length; i += 3) {
       const wholeIntensity = Math.floor(intensity -= step)
-      palette[iteration] = [ wholeIntensity, wholeIntensity, wholeIntensity ]
+      palette[i] = palette[i + 1] = palette[i + 2] = wholeIntensity
     }
   } else {
     const step = 1 / maximumIterations
@@ -65,10 +66,12 @@ function generatePalette () {
       : function () {
         return hsl2rgb(intensity, 0.5, 0.5)
       }
-    for (let iteration = 1; iteration <= maximumIterations; ++iteration) {
+    for (let i = 0; i < length; i += 3) {
       intensity -= step
       const [ r, g, b ] = rgb()
-      palette[iteration] = [ Math.floor(r), Math.floor(g), Math.floor(b) ]
+      palette[i] = Math.floor(r)
+      palette[i + 1] = Math.floor(g)
+      palette[i + 2] = Math.floor(b)
     }
   }
   console.timeEnd(message)
