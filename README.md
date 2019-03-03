@@ -1,7 +1,7 @@
 Julia and Mandelbrot Sets
 =========================
 
-Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a web page. See the [sources](public/mandelbrot.html) too.
+Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a web page. See the [sources](//github.com/prantlf/mandelbrot-set/public/mandelbrot.html) too.
 
 Usage
 -----
