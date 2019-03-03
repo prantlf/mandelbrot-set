@@ -29,7 +29,6 @@
     "public"
   ],
   "scripts": {
-    "benchmark": "node benchmarks/hsx2rgb && node benchmarks/complex",
     "lint": "standard --verbose",
     "lint:fix": "standard --verbose --fix",
     "start": "node server"
