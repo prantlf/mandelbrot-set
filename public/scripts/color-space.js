@@ -1,4 +1,4 @@
-// See http://en.wikipedia.org/wiki/HSL_color_space
+// See https://en.wikipedia.org/wiki/HSL_color_space
 // and https://en.wikipedia.org/wiki/HSL_and_HSV.
 
 function hsl2rgb (h, s, l) {

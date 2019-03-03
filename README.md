@@ -10,9 +10,9 @@ Import the web component with Julia or Mandelbrot set graphs by including its mo
 
 ```html
 <script>
-window.mandelbrotSetComputerUrl = '//unpkg.com/mandelbrot-set@1.0.1/public/scripts/computer.js'
+window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/computer.js'
 </script>
-<script src="//unpkg.com/mandelbrot-set@1.0.1/public/scripts/mandelbrot-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/mandelbrot-set-graph.js"
         type="module"></script>
 ```
 
@@ -30,7 +30,7 @@ Configuration
 In addition to Julia or Mandelbrot set graphs described above, import the web component with the configuration form by including its module at the end of the `body` element on your HTML page:
 
 ```html
-<script src="//unpkg.com/mandelbrot-set@1.0.1/public/scripts/mandelbrot-set-form.js"
+<script src="https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/mandelbrot-set-form.js"
         type="module"></script>
 ```
 
@@ -58,7 +58,7 @@ addEventListener('DOMContentLoaded', function () {
 You man consider applying a stylesheet for common HTML forms like [mini.css] by appending it to the document `head` element:
 
 ```html
-<link href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
       rel="stylesheet">
 ```
 
@@ -83,7 +83,7 @@ Examples
 
 ![Rainbow Zoom Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/julia-set-rainbow-zoomed.png) 
 
-[Node.js]: http://nodejs.org/
+[Node.js]: https://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [Julia]: https://prantlf.github.io/mandelbrot-set/public/julia.html
 [Mandelbrot]: https://prantlf.github.io/mandelbrot-set/public/mandelbrot.html
