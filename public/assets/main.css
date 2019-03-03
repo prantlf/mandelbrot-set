@@ -1,10 +1,12 @@
 body {
   margin: .5rem;
 }
+
 #main {
   display: flex;
   flex-wrap: wrap;
 }
+
 #graph {
   margin: .5rem;
 }

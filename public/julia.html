@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Renders Julia sets in colour.">
+  <title>Julia Sets</title>
+  <link rel="stylesheet" href="assets/mini-default.min.css" />
+  <link rel="stylesheet" href="assets/main.css" />
+</head>
+<body>
+  <h1>Julia Sets</h1>
+  <p>A web component and a web worker for painting Julia sets on a web page.
+     See also the <a href="mandelbrot.html">Mandelbrot</a> set and the
+     <a href="//github.com/prantlf/mandelbrot-set">project sources</a>.</p>
+   <div id="main">
+    <julia-set-form id="settings"></julia-set-form>
+    <julia-set-graph id="graph" auto-render="false"></julia-set-graph>
+  </div>
+  <script src="scripts/julia-set-form.js" type="module"></script>
+  <script src="scripts/julia-set-graph.js" type="module"></script>
+  <script src="assets/main.js" type="module"></script>
+</body>
+</html>

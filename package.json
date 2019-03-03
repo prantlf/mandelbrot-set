@@ -1,7 +1,7 @@
 {
   "name": "mandelbrot-set",
-  "version": "0.1.0",
-  "description": "Paints Julia and Mandelbrot sets on a web page using a web worker.",
+  "version": "1.0.0",
+  "description": "Web components and a web worker for painting Julia and Mandelbrot sets on a web page.",
   "author": {
     "name": "Ferdinand Prantl",
     "email": "prantlf@gmail.com",
@@ -25,6 +25,9 @@
   "engines": {
     "node": ">=8"
   },
+  "files": [
+    "public"
+  ],
   "scripts": {
     "benchmark": "node benchmarks/hsx2rgb && node benchmarks/complex",
     "lint": "standard --verbose",
@@ -34,6 +37,7 @@
   "devDependencies": {
     "benchmark": "2.1.4",
     "connect": "3.6.6",
+    "connect-block-favicon": "1.0.1",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-node": "8.0.1",
