@@ -8,10 +8,25 @@ template.innerHTML = `<form>
       <legend>Colour palette</legend>
       <input id="palette-grayscale" type="radio" name="palette" checked>
       <label for="palette-grayscale">Grayscale</label>
+      <input id="palette-jewels" type="radio" name="palette">
+      <label for="palette-jewels">Jewels</label>
       <input id="palette-fiery" type="radio" name="palette">
       <label for="palette-fiery">Fiery</label>
       <input id="palette-rainbow" type="radio" name="palette">
       <label for="palette-rainbow">Rainbow</label>
+      <input id="palette-sharp" type="radio" name="palette">
+      <label for="palette-sharp">Sharp</label>
+      <br>
+      <input id="palette-onion" type="radio" name="palette">
+      <label for="palette-onion">Onion</label>
+      <input id="palette-ocean" type="radio" name="palette">
+      <label for="palette-ocean">Ocean</label>
+      <input id="palette-poison" type="radio" name="palette">
+      <label for="palette-poison">Poison</label>
+      <input id="palette-garden" type="radio" name="palette">
+      <label for="palette-garden">Garden</label>
+      <input id="palette-sky" type="radio" name="palette">
+      <label for="palette-sky">Sky</label>
     </fieldset>
     <label for="size">Size [px]:</label>
     <input id="size" type="number" value="400">

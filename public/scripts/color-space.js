@@ -34,4 +34,53 @@ function hsl2rgb (h, s, l) {
   }
 }
 
-export { hsl2rgb }
+function hsv2rgb (h, s, v) {
+  if (v > 1) {
+    v = 1
+  }
+  const hp = h / 60
+  const c = v * s
+  const x = c * (1 - Math.abs((hp % 2) - 1))
+  let r, g, b
+
+  if (hp < 0) {
+    r = b = g = 0
+  } else if (hp < 1) {
+    r = c
+    g = x
+    b = 0
+  } else if (hp < 2) {
+    r = x
+    g = c
+    b = 0
+  } else if (hp < 3) {
+    r = 0
+    g = c
+    b = x
+  } else if (hp < 4) {
+    r = 0
+    g = x
+    b = c
+  } else if (hp < 5) {
+    r = x
+    g = 0
+    b = c
+  } else if (hp < 6) {
+    r = c
+    g = 0
+    b = x
+  } else {
+    r = 0
+    g = 0
+    b = 0
+  }
+
+  const m = v - c
+  r = (r + m) * 255
+  g = (g + m) * 255
+  b = (b + m) * 255
+
+  return [ r, g, b ]
+}
+
+export { hsl2rgb, hsv2rgb }
