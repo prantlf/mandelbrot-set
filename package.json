@@ -31,17 +31,20 @@
   "scripts": {
     "lint": "standard --verbose",
     "lint:fix": "standard --verbose --fix",
+    "update-stylesheet": "cpy node_modules/mini.css/dist/mini-default.min.css public/assets/",
     "start": "node server"
   },
   "devDependencies": {
     "benchmark": "2.1.4",
     "connect": "3.6.6",
     "connect-block-favicon": "1.0.2",
+    "cpy-cli": "2.0.0",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-node": "8.0.1",
     "eslint-plugin-promise": "4.0.1",
     "eslint-plugin-standard": "4.0.0",
+    "mini.css": "3.0.1",
     "morgan": "1.9.1",
     "serve-index": "1.9.1",
     "serve-static": "1.13.2",
