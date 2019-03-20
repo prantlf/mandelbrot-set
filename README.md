@@ -95,13 +95,13 @@ open http://localhost:8008/julia.html
 Examples
 --------
 
-![Grayscale Full Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/mandelbrot-set-grayscale-full.png) 
+![Grayscale Full Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-set-grayscale-full.png) 
 
-![Fiery Detail Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/mandelbrot-set-fiery-detail.png) 
+![Fiery Detail Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-set-fiery-detail.png) 
 
-![Rainbow Zoom Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/julia-set-rainbow-zoomed.png) 
+![Rainbow Zoom Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-set-rainbow-zoomed.png) 
 
-![Jewels Dialog Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/julia-set-jewels-dialog.png) 
+![Jewels Dialog Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-set-jewels-dialog.png) 
 
 [Node.js]: https://nodejs.org/
 [NPM]: https://www.npmjs.com/
