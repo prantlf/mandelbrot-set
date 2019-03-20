@@ -6,13 +6,15 @@ Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a 
 Usage
 -----
 
-Import the web component with Julia or Mandelbrot set graphs by including its module at the end of the `body` element on your HTML page:
+Import the web component with Julia or Mandelbrot set graphs by including its module at the end of the `body` element on your HTML page.:
 
 ```html
 <script>
 window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/computer.js'
 </script>
 <script src="https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/mandelbrot-set-graph.js"
+        type="module"></script>
+<script src="https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/julia-set-graph.js"
         type="module"></script>
 ```
 
@@ -22,6 +24,9 @@ Place the web component where you want to see it and set its attributes. The fol
 <mandelbrot-set-graph id="graph" width="400" height="400" scale="1"
                       offset-x="0" offset-y="0" palette="grayscale"
                       iteration-threshold="20"></mandelbrot-set-graph>
+<julia-set-graph id="graph" width="400" height="400" kr="0.4" ki="0.4"
+                 scale="1" offset-x="0" offset-y="0" palette="grayscale"
+                 iteration-threshold="20"></julia-set-graph>
 ```
 
 Configuration
@@ -38,6 +43,7 @@ Place the web component where you want to see the form:
 
 ```html
 <mandelbrot-set-form id="settings"></mandelbrot-set-form>
+<julia-set-form id="settings"></julia-set-form>
 ```
 
 Wire up the graph and the form, so that the form fields will edit the graph attributes:
@@ -55,11 +61,19 @@ addEventListener('DOMContentLoaded', function () {
 })
 ```
 
-You man consider applying a stylesheet for common HTML forms like [mini.css] by appending it to the document `head` element:
+If you use a stylesheet, which normalizes and styles plain HTML elements, like [mini.css], it will apply to the HTML form with the configuration too:
 
 ```html
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
       rel="stylesheet">
+```
+
+If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
+
+
+```html
+<mandelbrot-set-form stylesheet="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+                     id="settings"></mandelbrot-set-form>
 ```
 
 Development

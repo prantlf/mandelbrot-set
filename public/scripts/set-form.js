@@ -48,11 +48,26 @@ function applySettings (event) {
   this.dispatchEvent(event)
 }
 
+function appendStylesheet (parent, stylesheet) {
+  const link = document.createElement('link')
+  link.setAttribute('rel', 'stylesheet')
+  link.setAttribute('href', stylesheet)
+  parent.appendChild(link)
+}
+
 class SetFormElement extends HTMLElement {
   constructor () {
     super()
-    this.appendChild(template.content.cloneNode(true))
-    this.form = this.firstElementChild
+    const stylesheet = this.getAttribute('stylesheet')
+    let parent
+    if (stylesheet) {
+      parent = this.attachShadow({ mode: 'open' })
+      appendStylesheet(parent, stylesheet)
+    } else {
+      parent = this
+    }
+    parent.appendChild(template.content.cloneNode(true))
+    this.form = parent.lastElementChild
   }
 
   connectedCallback () {

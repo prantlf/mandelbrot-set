@@ -39,10 +39,10 @@ const paletteGenerators = {
     let intensity = 256
     for (let i = 0, length = palette.length; i < length; i += 3) {
       intensity -= step
-      const rgb = (intensity * 0xffff / colorCount) * 0xff;
-      palette[i] = rgb & 0xff;
-      palette[i + 1] = (rgb >> 8) & 0xff;
-      palette[i + 2] = (rgb >> 16) & 0xff;
+      const rgb = (intensity * 0xffff / colorCount) * 0xff
+      palette[i] = rgb & 0xff
+      palette[i + 1] = (rgb >> 8) & 0xff
+      palette[i + 2] = (rgb >> 16) & 0xff
     }
   },
 
