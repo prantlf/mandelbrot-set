@@ -29,6 +29,8 @@ Place the web component where you want to see it and set its attributes. The fol
                  iteration-threshold="20"></julia-set-graph>
 ```
 
+Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp", "onion", "poison", "garden", and "sky".
+
 Configuration
 -------------
 
@@ -76,6 +78,8 @@ If you want to isolate the styling of the form, set the stylesheet URL to the `s
                      id="settings"></mandelbrot-set-form>
 ```
 
+The page [mandelbrot.html](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) integrates the form in-place on the page. The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) opens the form in a modal dialog when clicking on a settings icon.
+
 Development
 -----------
 
@@ -96,6 +100,8 @@ Examples
 ![Fiery Detail Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/mandelbrot-set-fiery-detail.png) 
 
 ![Rainbow Zoom Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/julia-set-rainbow-zoomed.png) 
+
+![Jewels Dialog Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/julia-set-jewels-dialog.png) 
 
 [Node.js]: https://nodejs.org/
 [NPM]: https://www.npmjs.com/

@@ -6,19 +6,24 @@
   <meta name="description" content="Renders Julia sets in colour.">
   <title>Julia Sets</title>
   <link rel="stylesheet" href="assets/mini-default.min.css" />
-  <link rel="stylesheet" href="assets/main.css" />
+  <link rel="stylesheet" href="assets/julia.css" />
 </head>
 <body>
   <h1>Julia Sets</h1>
   <p>A web component and a web worker for painting Julia sets on a web page.
      See also the <a href="mandelbrot.html">Mandelbrot</a> set and the
      <a href="https://github.com/prantlf/mandelbrot-set">project sources</a>.</p>
-   <div id="main">
+  <dialog id="settings-dialog">
     <julia-set-form id="settings" stylesheet="assets/mini-default.min.css"></julia-set-form>
+  </dialog>
+  <div id="main">
     <julia-set-graph id="graph" auto-render="false"></julia-set-graph>
+    <button id="open-settings" type="button" title="Open Settings">
+      <span class="icon-settings"></span>
+    </button>
   </div>
   <script src="scripts/julia-set-form.js" type="module"></script>
   <script src="scripts/julia-set-graph.js" type="module"></script>
-  <script src="assets/main.js" type="module"></script>
+  <script src="assets/julia.js" type="module"></script>
 </body>
 </html>

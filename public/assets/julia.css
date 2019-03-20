@@ -1,0 +1,18 @@
+body {
+  margin: .5em;
+}
+
+#main {
+  position: relative;
+  width: fit-content;
+}
+
+#graph {
+  margin: .5em;
+}
+
+#open-settings {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
