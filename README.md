@@ -10,11 +10,11 @@ Import the web component with Julia or Mandelbrot set graphs by including its mo
 
 ```html
 <script>
-window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/computer.js'
+window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/computer.js'
 </script>
-<script src="https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/mandelbrot-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/mandelbrot-set-graph.js"
         type="module"></script>
-<script src="https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/julia-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/julia-set-graph.js"
         type="module"></script>
 ```
 
@@ -37,7 +37,7 @@ Configuration
 In addition to Julia or Mandelbrot set graphs described above, import the web component with the configuration form by including its module at the end of the `body` element on your HTML page:
 
 ```html
-<script src="https://unpkg.com/mandelbrot-set@1.0.1/public/scripts/mandelbrot-set-form.js"
+<script src="https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/mandelbrot-set-form.js"
         type="module"></script>
 ```
 
