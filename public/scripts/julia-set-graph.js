@@ -19,8 +19,8 @@ class JuliaSetGraphElement extends SetGraphElement {
   setAttributes (attributes) {
     super.setAttributes(attributes)
     const { kr, ki } = attributes
-    this.setAttribute('k-r', kr)
-    this.setAttribute('k-i', ki)
+    this.setAttribute('kr', kr)
+    this.setAttribute('ki', ki)
   }
 
   static get observedAttributes () { return observedJuliaAttributes }
