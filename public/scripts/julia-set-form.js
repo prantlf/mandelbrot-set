@@ -23,6 +23,12 @@ class JuliaSetFormElement extends SetFormElement {
     values.ki = +this.form.querySelector('#k-i').value
     return values
   }
+
+  setValues (values) {
+    super.setValues(values)
+    this.form.querySelector('#k-r').value = values.kr
+    this.form.querySelector('#k-i').value = values.ki
+  }
 }
 
 customElements.define('julia-set-form', JuliaSetFormElement)

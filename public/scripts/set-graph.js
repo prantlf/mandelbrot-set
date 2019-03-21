@@ -52,10 +52,10 @@ function requestGraph () {
 }
 
 function readParameters () {
-  const attributes = this.getAttributes()
-  attributes.number = this.number
-  attributes.type = this.type
-  this.parameters = attributes
+  const parameters = this.getAttributes()
+  parameters.number = this.number
+  parameters.type = this.type
+  this.parameters = parameters
 }
 
 function createCanvas () {
@@ -73,6 +73,15 @@ function clearCanvas () {
   this.context.clearRect(0, 0, width, height)
 }
 
+const attributeToParameter = {
+  palette: 'palette',
+  'iteration-threshold': 'iterationThreshold',
+  size: 'size',
+  'offset-x': 'offsetX',
+  'offset-y': 'offsetY',
+  scale: 'scale'
+}
+
 class SetGraphElement extends HTMLElement {
   constructor (type) {
     super()
@@ -81,6 +90,7 @@ class SetGraphElement extends HTMLElement {
     createCanvas.call(this)
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(this.canvas)
+    this.updatesEnabled = true
   }
 
   connectedCallback () {
@@ -102,6 +112,17 @@ class SetGraphElement extends HTMLElement {
     if (name === 'width' || name === 'height') {
       this.canvas.setAttribute(name, newValue)
     }
+    const parameters = this.parameters
+    if (parameters) {
+      const parameter = attributeToParameter[name]
+      if (parameter && parameters[parameter] != newValue) {
+        if (this.updatesEnabled) {
+          this.render()
+        } else {
+          this.updatesPending = true
+        }
+      }
+    }
   }
 
   getAttributes () {
@@ -112,7 +133,7 @@ class SetGraphElement extends HTMLElement {
     const offsetX = +(this.getAttribute('offset-x') || 0)
     const offsetY = +(this.getAttribute('offset-y') || 0)
     const scale = +(this.getAttribute('scale') || 1)
-    return { palette, iterationThreshold, width, height, offsetX, offsetY, scale }
+    return { palette, iterationThreshold, width, height, size: width, offsetX, offsetY, scale }
   }
 
   setAttributes ({ palette, iterationThreshold, size, offsetX, offsetY, scale }) {
@@ -129,6 +150,18 @@ class SetGraphElement extends HTMLElement {
     readParameters.call(this)
     refreshPalette.call(this)
     requestGraph.call(this)
+  }
+
+  suppressUpdates () {
+    this.updatesEnabled = false
+  }
+
+  resumeUpdates () {
+    if (this.updatesPending) {
+      this.render()
+      this.updatesPending = false
+    }
+    this.updatesEnabled = true
   }
 }
 
