@@ -75,6 +75,8 @@ const attributeToParameter = {
   palette: 'palette',
   'iteration-threshold': 'iterationThreshold',
   size: 'size',
+  width: 'size',
+  height: 'size',
   'offset-x': 'offsetX',
   'offset-y': 'offsetY',
   scale: 'scale'
@@ -107,13 +109,13 @@ class SetGraphElement extends HTMLElement {
   }
 
   attributeChangedCallback (name, oldValue, newValue) {
-    if (name === 'width' || name === 'height') {
-      this.canvas.setAttribute(name, newValue)
-    }
     const parameters = this.parameters
     if (parameters) {
       const parameter = attributeToParameter[name]
       if (parameter && parameters[parameter].toString() !== newValue.toString()) {
+        if (name === 'width' || name === 'height') {
+          this.canvas.setAttribute(name, newValue)
+        }
         if (this.updatesEnabled) {
           this.render()
         } else {

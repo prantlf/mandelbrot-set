@@ -14,11 +14,13 @@
      See also the <a href="mandelbrot.html">Mandelbrot</a> set and the
      <a href="https://github.com/prantlf/mandelbrot-set">project sources</a>.</p>
   <dialog id="settings-dialog">
-    <julia-set-form id="settings" stylesheet="assets/mini-default.min.css"></julia-set-form>
+    <julia-set-form stylesheet="assets/mini-default.min.css"
+                    id="settings" for="graph"></julia-set-form>
   </dialog>
   <div id="main">
-    <julia-set-graph id="graph" auto-render="false"></julia-set-graph>
-    <mandelbrot-set-toolbar id="toolbar" for="graph"></mandelbrot-set-toolbar>
+    <julia-set-graph id="graph"></julia-set-graph>
+    <mandelbrot-set-toolbar stylesheet="assets/mini-default.min.css"
+                            id="toolbar" for="graph"></mandelbrot-set-toolbar>
   </div>
   <script src="scripts/julia-set-form.js" type="module"></script>
   <script src="scripts/julia-set-graph.js" type="module"></script>

@@ -44,8 +44,35 @@ template.innerHTML = `<form>
 
 function applySettings (event) {
   event.preventDefault()
-  event = new CustomEvent('submit')
+  if (this.graph) {
+    this.saveParameters()
+    event = new CustomEvent('submitted')
+  } else {
+    event = new CustomEvent('submit')
+  }
   this.dispatchEvent(event)
+}
+
+function addFormListener (element) {
+  const applyThisSettings = applySettings.bind(element)
+  element.applyThisSettings = applyThisSettings
+  element.form.addEventListener('submit', applyThisSettings)
+}
+
+function removeFormListener (element) {
+  element.form.removeEventListener('submit', element.applyThisSettings)
+}
+
+function addGraphObserver (element) {
+  const observer = new MutationObserver(function () {
+    element.loadParameters()
+  })
+  observer.observe(element.graph, { attributes: true })
+  element.observer = observer
+}
+
+function removeGraphObserver (element) {
+  element.observer.disconnect()
 }
 
 class SetFormElement extends HTMLElement {
@@ -53,15 +80,37 @@ class SetFormElement extends HTMLElement {
     super()
     const parent = initializeElement(this, template)
     this.form = parent.lastElementChild
+    var graph = this.getAttribute('for')
+    if (graph) {
+      this.graph = document.getElementById(graph)
+    }
   }
 
   connectedCallback () {
-    this.applyThisSettings = applySettings.bind(this)
-    this.form.addEventListener('submit', this.applyThisSettings)
+    addFormListener(this)
+    if (this.graph) {
+      addGraphObserver(this)
+    }
   }
 
   disconnectedCallback () {
-    this.form.removeEventListener('submit', this.applyThisSettings)
+    removeFormListener(this)
+    if (this.graph) {
+      removeGraphObserver(this)
+    }
+  }
+
+  loadParameters () {
+    const settings = this.graph.getAttributes()
+    this.setValues(settings)
+  }
+
+  saveParameters () {
+    const settings = this.getValues()
+    const graph = this.graph
+    graph.suppressUpdates()
+    graph.setAttributes(settings)
+    graph.resumeUpdates()
   }
 
   getValues () {

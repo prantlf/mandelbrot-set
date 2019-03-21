@@ -46,13 +46,13 @@ In addition to Julia or Mandelbrot set graphs described above, import the web co
 Place the web component where you want to see the form:
 
 ```html
-<mandelbrot-set-form id="settings"></mandelbrot-set-form>
-<julia-set-form id="settings"></julia-set-form>
+<mandelbrot-set-form id="settings" for="graph"></mandelbrot-set-form>
+<julia-set-form id="settings" for="graph"></julia-set-form>
 ```
 
 ![Mandelbrot Configuration Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-form.png) ![Julia Configuration Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-form.png)
 
-Wire up the graph and the form, so that the form fields will edit the graph attributes:
+If you point the `for` attribute to the element with the graph, the form will be wired with it automaticall, so that changes of fiewld values will result in updating the graph. If you do not, you will be able to reuse the form for multiple graphs, but you will have to wire it to them manually:
 
 ```js
 addEventListener('DOMContentLoaded', function () {
@@ -61,8 +61,9 @@ addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', refreshGraph)
 
   function refreshGraph () {
+    graph.suppressUpdates()
     graph.setAttributes(form.getValues())
-    graph.render()
+    graph.resumeUpdates()
   }
 })
 ```
@@ -101,31 +102,23 @@ Place the web component where you want to see the toolbar:
 
 ![Mandelbrot Toolbar Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-toolbar.png)
 
-Panning and zooming will be wired to the graph automatically. Opening the configuration form has to be done manually depending on how you integrate the form. For example, using a modal dialog:
+Panning and zooming will be wired to the graph automatically. Opening the configuration form has to be done manually depending on how you integrate the form. For example, if you use a modal dialog:
 
 ```js
 addEventListener('DOMContentLoaded', function () {
+  const toolbar = document.getElementById('toolbar')
   const dialog = document.getElementById('settings-dialog')
   const form = document.getElementById('settings')
-  const graph = document.getElementById('graph')
-  const toolbar = document.getElementById('toolbar')
 
-  toolbar.addEventListener('open-settings', openSettings)
-  form.addEventListener('submit', applySettings)
+  toolbar.addEventListener('open-settings', openSettingsDialog)
+  form.addEventListener('submitted', closeSettingsDialog)
 
-  function openSettings () {
-    form.setValues(graph.getAttributes())
+  function openSettingsDialog () {
     dialog.showModal()
   }
 
-  function applySettings () {
+  function closeSettingsDialog () {
     dialog.close()
-    refreshGraph()
-  }
-
-  function refreshGraph () {
-    graph.setAttributes(form.getValues())
-    graph.render()
   }
 })
 ```
