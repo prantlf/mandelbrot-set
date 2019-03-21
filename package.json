@@ -31,9 +31,10 @@
   "scripts": {
     "lint": "standard --verbose",
     "lint:fix": "standard --verbose --fix",
-    "update-stylesheet": "cpy node_modules/mini.css/dist/mini-default.min.css public/assets/",
-    "update-icons": "cpy node_modules/bytesize-icon-elements/index.js public/assets/ --rename=bytesize-icons-elements.js",
-    "start": "node server"
+    "update-bytesize-icons": "node scripts/update-bytesize-icons",
+    "update-mini-css": "node scripts/update-mini-css",
+    "prepare": "npm run update-bytesize-icons && npm run update-mini-css && npm run lint",
+    "start": "node scripts/server"
   },
   "standard": {
     "env": [
@@ -43,9 +44,9 @@
   "devDependencies": {
     "benchmark": "2.1.4",
     "bytesize-icon-elements": "2.0.0",
+    "clean-css": "4.2.1",
     "connect": "3.6.6",
     "connect-block-favicon": "1.0.2",
-    "cpy-cli": "2.0.0",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-node": "8.0.1",
@@ -55,11 +56,12 @@
     "morgan": "1.9.1",
     "serve-index": "1.9.1",
     "serve-static": "1.13.2",
-    "standard": "12.0.1"
+    "standard": "12.0.1",
+    "terser": "3.17.0"
   },
+  "dependencies": {},
   "keywords": [
     "mandelbrot-set",
     "mandelbrot"
-  ],
-  "dependencies": {}
+  ]
 }

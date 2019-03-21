@@ -2,8 +2,9 @@
 .editorconfig
 .gitignore
 .npmignore
+.travis.yml
 .vscode
-*.png
 benchmarks
 node_modules
-server.js
+pictures
+scripts

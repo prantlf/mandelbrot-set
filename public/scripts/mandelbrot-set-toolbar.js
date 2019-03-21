@@ -1,4 +1,4 @@
-import '../assets/bytesize-icons-elements.js'
+import '../assets/bytesize-icon-elements.min.js'
 import { initializeElement } from './element-utils.js'
 
 const template = document.createElement('template')
