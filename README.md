@@ -2,7 +2,7 @@
 
 [![NPM version](https://badge.fury.io/js/mandelbrot-set.png)](http://badge.fury.io/js/mandelbrot-set)
 [![Build Status](https://travis-ci.org/prantlf/mandelbrot-set.png)](https://travis-ci.org/prantlf/mandelbrot-set)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e754152a04294169b8d2edab4e6f8205)](https://www.codacy.com/app/prantlf/mandelbrot-set?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prantlf/mandelbrot-set&amp;utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6a288ae050f171fee473/maintainability)](https://codeclimate.com/github/prantlf/mandelbrot-set/maintainability)
 [![devDependency Status](https://david-dm.org/prantlf/mandelbrot-set/dev-status.svg)](https://david-dm.org/prantlf/mandelbrot-set#info=devDependencies)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
