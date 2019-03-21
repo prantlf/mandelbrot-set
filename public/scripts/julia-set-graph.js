@@ -1,5 +1,3 @@
-/* global customElements */
-
 import { SetGraphElement, observedAttributes } from './set-graph.js'
 
 const observedJuliaAttributes = observedAttributes.concat('kr', 'ki')

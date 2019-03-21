@@ -1,5 +1,3 @@
-/* global HTMLElement, Worker */
-
 import { generatePalette } from './palette.js'
 
 const computerUrl = window.mandelbrotSetComputerUrl || './scripts/computer.js'
@@ -115,7 +113,7 @@ class SetGraphElement extends HTMLElement {
     const parameters = this.parameters
     if (parameters) {
       const parameter = attributeToParameter[name]
-      if (parameter && parameters[parameter] != newValue) {
+      if (parameter && parameters[parameter].toString() !== newValue.toString()) {
         if (this.updatesEnabled) {
           this.render()
         } else {

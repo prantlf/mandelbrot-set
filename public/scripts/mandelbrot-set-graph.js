@@ -1,5 +1,3 @@
-/* global customElements */
-
 import { SetGraphElement, observedAttributes } from './set-graph.js'
 
 class MandelbrotSetGraphElement extends SetGraphElement {

@@ -1,7 +1,5 @@
 // See https://en.wikipedia.org/wiki/Mandelbrot_set.
 
-/* global addEventListener, postMessage */
-
 // Computes z := z^2 + c until |z| > 2. Returns the count of
 // iterations run checking if the Mandelbrot set contains c,
 // when z starts as [0 + 0i] and c is a complex number.

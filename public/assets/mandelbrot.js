@@ -1,5 +1,3 @@
-/* global addEventListener */
-
 let form
 let graph
 

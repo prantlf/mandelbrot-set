@@ -1,5 +1,3 @@
-/* global CustomEvent, HTMLElement */
-
 import { initializeElement } from './element-utils.js'
 
 const template = document.createElement('template')

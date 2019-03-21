@@ -1,5 +1,3 @@
-/* global customElements */
-
 import { SetFormElement } from './set-form.js'
 
 class MandelbrotSetFormElement extends SetFormElement {}

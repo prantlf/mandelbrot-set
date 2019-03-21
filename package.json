@@ -35,6 +35,9 @@
     "update-icons": "cpy node_modules/bytesize-icon-elements/index.js public/assets/ --rename=bytesize-icons-elements.js",
     "start": "node server"
   },
+  "standard": {
+    "env": ["browser"]
+  },
   "devDependencies": {
     "benchmark": "2.1.4",
     "bytesize-icon-elements": "2.0.0",
