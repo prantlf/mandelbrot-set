@@ -1,6 +1,6 @@
 {
   "name": "mandelbrot-set",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Web components and a web worker for painting Julia and Mandelbrot sets on a web page.",
   "author": {
     "name": "Ferdinand Prantl",
