@@ -11,8 +11,11 @@ body {
   margin: .5em;
 }
 
-#open-settings {
+#toolbar {
   position: absolute;
-  bottom: 1em;
-  right: 1em;
+  bottom: .5em;
+  left: .5em;
+  width: calc(100% - 1em);
+  display: flex;
+  justify-content: space-between;
 }

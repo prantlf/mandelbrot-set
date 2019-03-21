@@ -19,13 +19,15 @@ function applySettings () {
 
 function openSettings () {
   if (dialog.showModal) {
+    const settings = graph.getAttributes()
+    form.setValues(settings)
     dialog.showModal()
   }
 }
 
 function initializePage () {
-  const trigger = document.getElementById('open-settings')
-  trigger.addEventListener('click', openSettings)
+  const toolbar = document.getElementById('toolbar')
+  toolbar.addEventListener('open-settings', openSettings)
   form = document.getElementById('settings')
   form.addEventListener('submit', applySettings)
   dialog = document.getElementById('settings-dialog')
