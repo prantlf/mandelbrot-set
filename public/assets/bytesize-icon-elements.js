@@ -1,4 +1,4 @@
-(function () {
+(function() {
   const weights = {
     'ultra-light': '1.5625%',
     thin: '3.125%',
@@ -7,52 +7,52 @@
     medium: '7.8125%',
     bold: '9.375%',
     heavy: '10.9375%'
-  }
+  };
 
   const styles = {
     round: {
       linejoin: 'round',
-      linecap: 'round'
+      linecap: 'round',
     },
     bevel: {
       linejoin: 'bevel',
-      linecap: 'butt'
+      linecap: 'butt',
     },
     miter: {
       linejoin: 'miter',
-      linecap: 'butt'
+      linecap: 'butt',
     }
-  }
+  };
 
   const defaultAttributes = {
     size: '32',
     weight: 'regular',
     style: 'round'
-  }
+  };
 
   function setDefaultAttributes (attributes) {
-    Object.assign(defaultAttributes, attributes)
+    Object.assign(defaultAttributes, attributes);
   }
 
   class BytesizeIconDefaults extends HTMLElement {
-    constructor () {
-      super()
-      const size = this.getAttribute('size') || defaultAttributes.size
-      const weight = this.getAttribute('weight') || defaultAttributes.weight
-      const style = this.getAttribute('style') || defaultAttributes.style
-      setDefaultAttributes({ size, weight, style })
+    constructor() {
+      super();
+      const size = this.getAttribute('size') || defaultAttributes.size;
+      const weight = this.getAttribute('weight') || defaultAttributes.weight;
+      const style = this.getAttribute('style') || defaultAttributes.style;
+      setDefaultAttributes({ size, weight, style });
     }
   }
 
-  customElements.define('bytesize-icon-defaults', BytesizeIconDefaults)
+  customElements.define('bytesize-icon-defaults', BytesizeIconDefaults);
 
   class BytesizeIcon extends HTMLElement {
-    constructor () {
-      super()
-      const size = this.getAttribute('size') || defaultAttributes.size
-      const weight = weights[this.getAttribute('weight')] || weights[defaultAttributes.weight]
-      const style = styles[this.getAttribute('style')] || styles[defaultAttributes.style]
-      const { linecap, linejoin } = style
+    constructor() {
+      super();
+      const size = this.getAttribute('size') || defaultAttributes.size;
+      const weight = weights[this.getAttribute('weight')] || weights[defaultAttributes.weight];
+      const style = styles[this.getAttribute('style')] || styles[defaultAttributes.style];
+      const { linecap, linejoin } = style;
       const icons = {
         activity: `<svg id="i-activity" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="${size}" height="${size}" fill="none" stroke="currentcolor" stroke-linecap="${linecap}" stroke-linejoin="${linejoin}" stroke-width="${weight}">
     <path d="M4 16 L11 16 14 29 18 3 21 16 28 16" />
@@ -361,20 +361,20 @@
         work: `<svg id="i-work" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="${size}" height="${size}" fill="none" stroke="currentcolor" stroke-linecap="${linecap}" stroke-linejoin="${linejoin}" stroke-width="${weight}">
     <path d="M30 8 L2 8 2 26 30 26 Z M20 8 C20 8 20 4 16 4 12 4 12 8 12 8 M8 26 L8 8 M24 26 L24 8" />
 </svg>`
-      }
-      const html = icons[this.getAttribute('name')]
-      this.innerHTML = html
+      };
+      const html = icons[this.getAttribute('name')]; 
+      this.innerHTML = html;
     }
   }
 
-  customElements.define('bytesize-icon', BytesizeIcon)
+  customElements.define('bytesize-icon', BytesizeIcon);
 
   BytesizeIcon.setDefaultAttributes = function (attributes) {
-    Object.assign(defaultAttributes, attributes)
-  }
+    Object.assign(defaultAttributes, attributes);
+  };
 
-  window.BytesizeIconDefaults = BytesizeIconDefaults
-  window.BytesizeIcon = BytesizeIcon
+  window.BytesizeIconDefaults = BytesizeIconDefaults;
+  window.BytesizeIcon = BytesizeIcon;
 
-  BytesizeIcon.names = ['activity', 'alert', 'archive', 'arrow-bottom', 'arrow-left', 'arrow-right', 'arrow-top', 'backwards', 'bag', 'ban', 'bell', 'book', 'bookmark', 'calendar', 'camera', 'caret-bottom', 'caret-left', 'caret-right', 'caret-top', 'cart', 'checkmark', 'chevron-bottom', 'chevron-left', 'chevron-right', 'chevron-top', 'clipboard', 'clock', 'close', 'code', 'compose', 'creditcard', 'desktop', 'download', 'edit', 'eject', 'ellipsis-horizontal', 'ellipsis-vertical', 'end', 'export', 'external', 'eye', 'file', 'fire', 'flag', 'folder-open', 'folder', 'forwards', 'gift', 'github', 'heart', 'home', 'import', 'inbox', 'info', 'lightning', 'link', 'location', 'lock', 'mail', 'menu', 'message', 'microphone', 'minus', 'mobile', 'move', 'music', 'mute', 'options', 'paperclip', 'pause', 'photo', 'play', 'plus', 'portfolio', 'print', 'reload', 'reply', 'search', 'send', 'settings', 'sign-in', 'sign-out', 'star', 'start', 'tag', 'telephone', 'trash', 'twitter', 'unlock', 'upload', 'user', 'video', 'volume', 'work']
-})()
+  BytesizeIcon.names = ['activity', 'alert', 'archive', 'arrow-bottom', 'arrow-left', 'arrow-right', 'arrow-top', 'backwards', 'bag', 'ban', 'bell', 'book', 'bookmark', 'calendar', 'camera', 'caret-bottom', 'caret-left', 'caret-right', 'caret-top', 'cart', 'checkmark', 'chevron-bottom', 'chevron-left', 'chevron-right', 'chevron-top', 'clipboard', 'clock', 'close', 'code', 'compose', 'creditcard', 'desktop', 'download', 'edit', 'eject', 'ellipsis-horizontal', 'ellipsis-vertical', 'end', 'export', 'external', 'eye', 'file', 'fire', 'flag', 'folder-open', 'folder', 'forwards', 'gift', 'github', 'heart', 'home', 'import', 'inbox', 'info', 'lightning', 'link', 'location', 'lock', 'mail', 'menu', 'message', 'microphone', 'minus', 'mobile', 'move', 'music', 'mute', 'options', 'paperclip', 'pause', 'photo', 'play', 'plus', 'portfolio', 'print', 'reload', 'reply', 'search', 'send', 'settings', 'sign-in', 'sign-out', 'star', 'start', 'tag', 'telephone', 'trash', 'twitter', 'unlock', 'upload', 'user', 'video', 'volume', 'work'];
+})();
