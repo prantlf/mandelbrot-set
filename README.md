@@ -10,11 +10,11 @@ Import the web component with Julia or Mandelbrot set graphs by including its mo
 
 ```html
 <script>
-window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/computer.js'
+window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/computer.js'
 </script>
-<script src="https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/mandelbrot-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/mandelbrot-set-graph.js"
         type="module"></script>
-<script src="https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/julia-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/julia-set-graph.js"
         type="module"></script>
 ```
 
@@ -31,13 +31,15 @@ Place the web component where you want to see it and set its attributes. The fol
 
 Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp", "onion", "poison", "garden", and "sky".
 
-Configuration
--------------
+![Mandelbrot Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-set.png) ![Julia Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-set.png)
+
+Configuration Form
+------------------
 
 In addition to Julia or Mandelbrot set graphs described above, import the web component with the configuration form by including its module at the end of the `body` element on your HTML page:
 
 ```html
-<script src="https://unpkg.com/mandelbrot-set@1.1.1/public/scripts/mandelbrot-set-form.js"
+<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/mandelbrot-set-form.js"
         type="module"></script>
 ```
 
@@ -47,6 +49,8 @@ Place the web component where you want to see the form:
 <mandelbrot-set-form id="settings"></mandelbrot-set-form>
 <julia-set-form id="settings"></julia-set-form>
 ```
+
+![Mandelbrot Configuration Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-form.png) ![Julia Configuration Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-form.png)
 
 Wire up the graph and the form, so that the form fields will edit the graph attributes:
 
@@ -72,13 +76,76 @@ If you use a stylesheet, which normalizes and styles plain HTML elements, like [
 
 If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
 
-
 ```html
 <mandelbrot-set-form stylesheet="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
                      id="settings"></mandelbrot-set-form>
 ```
 
-The page [mandelbrot.html](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) integrates the form in-place on the page. The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) opens the form in a modal dialog when clicking on a settings icon.
+The page [mandelbrot.html](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) integrates the form in-place on the page. The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) opens the form in a modal dialog when clicking on the button with the settings icon.
+
+Manipulation Toolbar
+--------------------
+
+If you want to make panning and zoomin in Julia or Mandelbrot set graphs easier, import the web component with the manipulation toolbar by including its module at the end of the `body` element on your HTML page:
+
+```html
+<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/mandelbrot-set-toolbar.js"
+        type="module"></script>
+```
+
+Place the web component where you want to see the toolbar:
+
+```html
+<mandelbrot-set-toolbar id="toolbar" for="graph"></mandelbrot-set-toolbar>
+```
+
+![Mandelbrot Toolbar Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-toolbar.png)
+
+Panning and zooming will be wired to the graph automatically. Opening the configuration form has to be done manually depending on how you integrate the form. For example, using a modal dialog:
+
+```js
+addEventListener('DOMContentLoaded', function () {
+  const dialog = document.getElementById('settings-dialog')
+  const form = document.getElementById('settings')
+  const graph = document.getElementById('graph')
+  const toolbar = document.getElementById('toolbar')
+
+  toolbar.addEventListener('open-settings', openSettings)
+  form.addEventListener('submit', applySettings)
+
+  function openSettings () {
+    form.setValues(graph.getAttributes())
+    dialog.showModal()
+  }
+
+  function applySettings () {
+    dialog.close()
+    refreshGraph()
+  }
+
+  function refreshGraph () {
+    graph.setAttributes(form.getValues())
+    graph.render()
+  }
+})
+```
+
+If you use a stylesheet, which normalizes and styles plain HTML elements, like [mini.css], it will apply to the toolbar buttons too:
+
+```html
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+      rel="stylesheet">
+```
+
+If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
+
+
+```html
+<mandelbrot-set-toolbar stylesheet="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+                     id="toolbar"></mandelbrot-set-toolbar>
+```
+
+The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) demonstratest the usage of the toolbar including opening the configuration form in a modal dialog.
 
 Development
 -----------
