@@ -1,10 +1,14 @@
-Julia and Mandelbrot Sets
-=========================
+# Julia and Mandelbrot Sets
+
+[![NPM version](https://badge.fury.io/js/mandelbrot-set.png)](http://badge.fury.io/js/mandelbrot-set)
+[![Build Status](https://travis-ci.org/prantlf/mandelbrot-set.png)](https://travis-ci.org/prantlf/mandelbrot-set)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e754152a04294169b8d2edab4e6f8205)](https://www.codacy.com/app/prantlf/mandelbrot-set?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prantlf/mandelbrot-set&amp;utm_campaign=Badge_Grade)
+[![devDependency Status](https://david-dm.org/prantlf/mandelbrot-set/dev-status.svg)](https://david-dm.org/prantlf/mandelbrot-set#info=devDependencies)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a web page. See the [sources](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) too.
 
-Usage
------
+## Usage
 
 Import the web component with Julia or Mandelbrot set graphs by including its module at the end of the `body` element on your HTML page.:
 
@@ -33,8 +37,7 @@ Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp",
 
 ![Mandelbrot Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-set.png) ![Julia Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-set.png)
 
-Configuration Form
-------------------
+## Configuration Form
 
 In addition to Julia or Mandelbrot set graphs described above, import the web component with the configuration form by including its module at the end of the `body` element on your HTML page:
 
@@ -84,8 +87,7 @@ If you want to isolate the styling of the form, set the stylesheet URL to the `s
 
 The page [mandelbrot.html](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) integrates the form in-place on the page. The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) opens the form in a modal dialog when clicking on the button with the settings icon.
 
-Manipulation Toolbar
---------------------
+## Manipulation Toolbar
 
 If you want to make panning and zoomin in Julia or Mandelbrot set graphs easier, import the web component with the manipulation toolbar by including its module at the end of the `body` element on your HTML page:
 
@@ -140,8 +142,7 @@ If you want to isolate the styling of the form, set the stylesheet URL to the `s
 
 The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) demonstratest the usage of the toolbar including opening the configuration form in a modal dialog.
 
-Development
------------
+## Development
 
 This project installs support for a local web server and code validation using [NPM]. Make sure, that you use [Node.js] version 8 or newer.
 
@@ -152,8 +153,7 @@ open http://localhost:8008/mandelbrot.html
 open http://localhost:8008/julia.html
 ```
 
-Examples
---------
+## Examples
 
 ![Grayscale Full Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-set-grayscale-full.png) 
 
