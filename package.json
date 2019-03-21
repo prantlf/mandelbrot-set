@@ -36,7 +36,9 @@
     "start": "node server"
   },
   "standard": {
-    "env": ["browser"]
+    "env": [
+      "browser"
+    ]
   },
   "devDependencies": {
     "benchmark": "2.1.4",
