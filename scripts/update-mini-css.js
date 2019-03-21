@@ -22,8 +22,9 @@ function removeIcons (content) {
         return true
       }
       return false
-    } else if (line.startsWith('/*') && index < length - 1 &&
-               lines[index + 1].includes('Definitions for icons')) {
+    }
+    if (line.startsWith('/*') && index < length - 1 &&
+        lines[index + 1].includes('Definitions for icons')) {
       skippingIcons = true
       return false
     }
