@@ -1,6 +1,7 @@
 import { generatePalette } from './palette.js'
+import { getComputerUrl } from './mandelbrot-set-computer.js'
 
-const computerUrl = window.mandelbrotSetComputerUrl || './scripts/computer.js'
+const computerUrl = getComputerUrl()
 const computer = new Worker(computerUrl)
 
 let counter = 0
