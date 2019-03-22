@@ -65,6 +65,10 @@
   "dependencies": {},
   "keywords": [
     "mandelbrot-set",
-    "mandelbrot"
+    "mandelbrot",
+    "julia-sets",
+    "julia",
+    "custom-elements",
+    "web-components"
   ]
 }
