@@ -20,11 +20,11 @@ Import the web component with Julia or Mandelbrot set graphs by including its mo
 
 ```html
 <script>
-window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/computer.js'
+window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/computer.js'
 </script>
-<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set-graph.js"
         type="module"></script>
-<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/julia-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/julia-set-graph.js"
         type="module"></script>
 ```
 
@@ -48,7 +48,7 @@ Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp",
 In addition to Julia or Mandelbrot set graphs described above, import the web component with the configuration form by including its module at the end of the `body` element on your HTML page:
 
 ```html
-<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set-form.js"
+<script src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set-form.js"
         type="module"></script>
 ```
 
@@ -98,7 +98,7 @@ The page [mandelbrot.html](//github.com/prantlf/mandelbrot-set/blob/master/publi
 If you want to make panning and zoomin in Julia or Mandelbrot set graphs easier, import the web component with the manipulation toolbar by including its module at the end of the `body` element on your HTML page:
 
 ```html
-<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set-toolbar.js"
+<script src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set-toolbar.js"
         type="module"></script>
 ```
 
@@ -153,9 +153,9 @@ Import the web component with Julia or Mandelbrot set demonstration by including
 
 ```html
 <script>
-window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/computer.js'
+window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/computer.js'
 </script>
-<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set.js"
+<script src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set.js"
         type="module"></script>
 ```
 
