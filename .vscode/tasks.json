@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Server",
+      "label": "server",
       "type": "npm",
       "script": "start",
       "isBackground": true,

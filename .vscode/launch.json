@@ -17,19 +17,34 @@
       "program": "${workspaceFolder}/scripts/update-mini-css"
     },
     {
-      "type": "chrome",
+      "type": "node",
       "request": "launch",
-      "name": "Launch Chrome",
-      "url": "http://localhost:8008/mandelbrot.html",
-      "webRoot": "${workspaceFolder}/pages",
-      "preLaunchTask": "Run Server"
+      "name": "server",
+      "program": "${workspaceFolder}/scripts/server"
     },
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Attach Chrome",
+      "name": "mandelbrot",
       "url": "http://localhost:8008/mandelbrot.html",
-      "webRoot": "${workspaceFolder}/pages"
+      "webRoot": "${workspaceFolder}/public",
+      "preLaunchTask": "server"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "julia",
+      "url": "http://localhost:8008/julia.html",
+      "webRoot": "${workspaceFolder}/public",
+      "preLaunchTask": "server"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "demo",
+      "url": "http://localhost:8008/demo.html",
+      "webRoot": "${workspaceFolder}/public",
+      "preLaunchTask": "server"
     }
   ]
 }
