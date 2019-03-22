@@ -8,22 +8,67 @@
 
 Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a web page, [including interactive controls](https://prantlf.github.io/mandelbrot-set/public/demo.html). See the [sources](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) too.
 
-- [Usage](#usage)
+- [Synopsis](#synopsis)
+- [Common](#common)
+- [Mandelbrot and Julia Sets](#mandelbrot-and-julia-sets)
 - [Configuration Form](#configuration-form)
 - [Manipulation Toolbar](#manipulation-toolbar)
 - [All-In-One](#all-in-one)
 - [Development](#development)
+- [Examples](#examples)
 
-## Usage
+## Synopsis
+
+Place elements of your choice to your web page and load their script at the end of the `body` element. You can use either a global stylesheet to style the custom elements, or an element-specific one to turn them to isolated web components.
+
+```html
+<mandelbrot-set
+  stylesheet="https://unpkg.com/mandelbrot-set@2.1.0/public/assets/mini-default.min.css"
+  palette="jewels" iteration-threshold="150" scale="50"
+  width="600" height="300" offset-x="0.465" offset-y="1.980"></mandelbrot-set>
+<script
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-all.min.js"
+  type="module"></script>
+```
+
+![Mandelbrot All Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-all.png)
+
+## Common
+
+You can import single components as written below, or you can use the single minified JavaScript bundle with all of them:
+
+```html
+<script
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-all.min.js"
+  type="module"></script>
+```
+
+Before you insert any other custom element, you may need to set the URL to the web worker for performing the computations. The URL may be either absolute or relative to the path of the current page. The following is the default:
+
+```html
+<mandelbrot-set-computer
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/computer.js"
+  ></mandelbrot-set-computer>
+```
+
+If you use a stylesheet, which normalizes and styles plain HTML elements, like [mini.css], it will apply to the configuration form and manipulation toolbar too:
+
+```html
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+  rel="stylesheet">
+```
+
+## Mandelbrot and Julia Sets
 
 Import the web component with Julia or Mandelbrot set graphs by including its module at the end of the `body` element on your HTML page.:
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set-graph.js"
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set-graph.js"
   type="module"></script>
 <script
-  src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/julia-set-graph.js"
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/julia-set-graph.js"
   type="module"></script>
 ```
 
@@ -44,21 +89,13 @@ Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp",
 
 ![Mandelbrot Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-set.png) ![Julia Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-set.png)
 
-Before you insert any other custom elements, you may need to set the URL to the web worker for performing the computations. The URL may be either absolute or relative to the path pf the current page. The following is the default:
-
-```html
-<mandelbrot-set-computer
-  src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/computer.js"
-  ></mandelbrot-set-computer>
-```
-
 ## Configuration Form
 
 In addition to Julia or Mandelbrot set graphs described above, import the web component with the configuration form by including its module at the end of the `body` element on your HTML page:
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set-form.js"
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set-form.js"
   type="module"></script>
 ```
 
@@ -87,14 +124,6 @@ addEventListener('DOMContentLoaded', function () {
 })
 ```
 
-If you use a stylesheet, which normalizes and styles plain HTML elements, like [mini.css], it will apply to the HTML form with the configuration too:
-
-```html
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
-  rel="stylesheet">
-```
-
 If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
 
 ```html
@@ -111,7 +140,7 @@ If you want to make panning and zoomin in Julia or Mandelbrot set graphs easier,
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set-toolbar.js"
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set-toolbar.js"
   type="module"></script>
 ```
 
@@ -144,14 +173,6 @@ addEventListener('DOMContentLoaded', function () {
 })
 ```
 
-If you use a stylesheet, which normalizes and styles plain HTML elements, like [mini.css], it will apply to the toolbar buttons too:
-
-```html
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
-  rel="stylesheet">
-```
-
 If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
 
 ```html
@@ -168,7 +189,7 @@ Import the web component with Julia or Mandelbrot set demonstration by including
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/mandelbrot-set.js"
+  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set.js"
   type="module"></script>
 ```
 
@@ -182,22 +203,6 @@ Possible types are "mandelbrot" and "julia". This element includes controls for 
 
 ![Mandelbrot Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-demo.png)
 
-Before you insert any other custom elements, you may need to set the URL to the web worker for performing the computations. The URL may be either absolute or relative to the path pf the current page. The following is the default:
-
-```html
-<mandelbrot-set-computer
-  src="'https://unpkg.com/mandelbrot-set@2.0.0/public/scripts/computer.js'"
-  ></mandelbrot-set-computer>
-```
-
-If you use a stylesheet, which normalizes and styles plain HTML elements, like [mini.css], it will apply to the form, fields and toolbar buttons too:
-
-```html
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
-  rel="stylesheet">
-```
-
 If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
 
 ```html
@@ -210,13 +215,12 @@ The page [demo.html](//github.com/prantlf/mandelbrot-set/blob/master/public/demo
 
 ## Development
 
-This project installs support for a local web server and code validation using [NPM]. Make sure, that you use [Node.js] version 8 or newer.
+This project installs support for a local web server, code validation and build output using [NPM]. Make sure, that you use [Node.js] version 8 or newer.
 
 ```sh
 npm ci
 npm start
 open http://localhost:8008/mandelbrot.html
-open http://localhost:8008/julia.html
 ```
 
 ## Examples

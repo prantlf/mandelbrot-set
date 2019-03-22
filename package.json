@@ -33,8 +33,9 @@
     "lint:fix": "standard --verbose --fix",
     "update-bytesize-icons": "node scripts/update-bytesize-icons",
     "update-mini-css": "node scripts/update-mini-css",
-    "prepare": "npm run update-bytesize-icons && npm run update-mini-css && npm run lint",
-    "start": "node scripts/server"
+    "prepare": "npm run update-bytesize-icons && npm run update-mini-css && npm run lint && npm run build",
+    "build": "node scripts/build-all",
+    "start": "node scripts/serve-public"
   },
   "standard": {
     "env": [
@@ -57,6 +58,9 @@
     "eslint-plugin-standard": "4.0.0",
     "mini.css": "3.0.1",
     "morgan": "1.9.1",
+    "rollup": "1.7.0",
+    "rollup-plugin-multi-entry": "2.1.0",
+    "rollup-plugin-terser": "4.0.4",
     "serve-index": "1.9.1",
     "serve-static": "1.13.2",
     "standard": "12.0.1",

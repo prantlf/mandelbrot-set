@@ -19,6 +19,12 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "build-all",
+      "program": "${workspaceFolder}/scripts/build-all"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "server",
       "program": "${workspaceFolder}/scripts/server"
     },
