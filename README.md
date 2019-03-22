@@ -8,6 +8,12 @@
 
 Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a web page, [including interactive controls](https://prantlf.github.io/mandelbrot-set/public/demo.html). See the [sources](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) too.
 
+- [Usage](#usage)
+- [Configuration Form](#configuration-form)
+- [Manipulation Toolbar](#manipulation-toolbar)
+- [All-In-One](#all-in-one)
+- [Development](#development)
+
 ## Usage
 
 Import the web component with Julia or Mandelbrot set graphs by including its module at the end of the `body` element on your HTML page.:
@@ -65,7 +71,7 @@ addEventListener('DOMContentLoaded', function () {
 
   function refreshGraph () {
     graph.suppressUpdates()
-    graph.setAttributes(form.getValues())
+    graph.setParameters(form.getParameters())
     graph.resumeUpdates()
   }
 })

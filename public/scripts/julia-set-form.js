@@ -15,17 +15,17 @@ class JuliaSetFormElement extends SetFormElement {
     this.form.insertBefore(template.content.cloneNode(true), this.form.firstElementChild)
   }
 
-  getValues () {
-    const values = super.getValues()
-    values.kr = +this.form.querySelector('#k-r').value
-    values.ki = +this.form.querySelector('#k-i').value
-    return values
+  getParameters () {
+    const parameters = super.getParameters()
+    parameters.kr = +this.form.querySelector('#k-r').value
+    parameters.ki = +this.form.querySelector('#k-i').value
+    return parameters
   }
 
-  setValues (values) {
-    super.setValues(values)
-    this.form.querySelector('#k-r').value = values.kr
-    this.form.querySelector('#k-i').value = values.ki
+  setParameters (parameters) {
+    super.setParameters(parameters)
+    this.form.querySelector('#k-r').value = parameters.kr
+    this.form.querySelector('#k-i').value = parameters.ki
   }
 }
 

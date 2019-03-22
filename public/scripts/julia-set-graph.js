@@ -7,16 +7,16 @@ class JuliaSetGraphElement extends SetGraphElement {
     super('julia')
   }
 
-  getAttributes () {
-    const attributes = super.getAttributes()
-    attributes.kr = +(this.getAttribute('kr') || 0.4)
-    attributes.ki = +(this.getAttribute('ki') || 0.4)
-    return attributes
+  getParameters () {
+    const parameters = super.getParameters()
+    parameters.kr = +(this.getAttribute('kr') || 0.4)
+    parameters.ki = +(this.getAttribute('ki') || 0.4)
+    return parameters
   }
 
-  setAttributes (attributes) {
-    super.setAttributes(attributes)
-    const { kr, ki } = attributes
+  setParameters (parameters) {
+    super.setParameters(parameters)
+    const { kr, ki } = parameters
     this.setAttribute('kr', kr)
     this.setAttribute('ki', ki)
   }

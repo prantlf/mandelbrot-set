@@ -50,7 +50,7 @@ function requestGraph () {
 }
 
 function readParameters () {
-  const parameters = this.getAttributes()
+  const parameters = this.getParameters()
   parameters.number = this.number
   parameters.type = this.type
   this.parameters = parameters
@@ -125,7 +125,7 @@ class SetGraphElement extends HTMLElement {
     }
   }
 
-  getAttributes () {
+  getParameters () {
     const palette = this.getAttribute('palette') || 'grayscale'
     const width = +(this.getAttribute('width') || 400)
     const height = +(this.getAttribute('height') || 400)
@@ -136,7 +136,7 @@ class SetGraphElement extends HTMLElement {
     return { palette, iterationThreshold, width, height, size: width, offsetX, offsetY, scale }
   }
 
-  setAttributes ({ palette, iterationThreshold, size, offsetX, offsetY, scale }) {
+  setParameters ({ palette, iterationThreshold, size, offsetX, offsetY, scale }) {
     this.setAttribute('palette', palette)
     this.setAttribute('width', size)
     this.setAttribute('height', size)

@@ -101,19 +101,19 @@ class SetFormElement extends HTMLElement {
   }
 
   loadParameters () {
-    const settings = this.graph.getAttributes()
-    this.setValues(settings)
+    const parameters = this.graph.getParameters()
+    this.setParameters(parameters)
   }
 
   saveParameters () {
-    const settings = this.getValues()
+    const parameters = this.getParameters()
     const graph = this.graph
     graph.suppressUpdates()
-    graph.setAttributes(settings)
+    graph.setParameters(parameters)
     graph.resumeUpdates()
   }
 
-  getValues () {
+  getParameters () {
     const form = this.form
     const palette = form.querySelector('input[name="palette"]:checked').id.substr(8)
     const size = +form.querySelector('#size').value
@@ -124,7 +124,7 @@ class SetFormElement extends HTMLElement {
     return { palette, iterationThreshold, size, offsetX, offsetY, scale }
   }
 
-  setValues ({ palette, iterationThreshold, size, offsetX, offsetY, scale }) {
+  setParameters ({ palette, iterationThreshold, size, offsetX, offsetY, scale }) {
     const form = this.form
     form.querySelector(`#palette-${palette}`).checked = true
     form.querySelector('#size').value = size
