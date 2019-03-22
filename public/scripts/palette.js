@@ -69,7 +69,7 @@ const paletteGenerators = {
 
   onion (palette, colorCount) {
     function assignColor (intensity) {
-      var [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
+      const [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
       return [r, b, g]
     }
     fillHsvPalette(palette, colorCount, assignColor)
@@ -77,7 +77,7 @@ const paletteGenerators = {
 
   ocean (palette, colorCount) {
     function assignColor (intensity) {
-      var [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
+      const [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
       return [b, g, r]
     }
     fillHsvPalette(palette, colorCount, assignColor)
@@ -85,7 +85,7 @@ const paletteGenerators = {
 
   poison (palette, colorCount) {
     function assignColor (intensity) {
-      var [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
+      const [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
       return [b, r, g]
     }
     fillHsvPalette(palette, colorCount, assignColor)
@@ -93,7 +93,7 @@ const paletteGenerators = {
 
   garden (palette, colorCount) {
     function assignColor (intensity) {
-      var [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
+      const [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
       return [g, r, b]
     }
     fillHsvPalette(palette, colorCount, assignColor)
@@ -101,7 +101,7 @@ const paletteGenerators = {
 
   sky (palette, colorCount) {
     function assignColor (intensity) {
-      var [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
+      const [r, g, b] = hsv2rgb(360 * intensity, 1, 1)
       return [g, b, r]
     }
     fillHsvPalette(palette, colorCount, assignColor)

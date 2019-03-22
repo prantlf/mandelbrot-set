@@ -170,7 +170,7 @@ class MandelbrotSetToolbarElement extends HTMLElement {
     super()
     const parent = initializeElement(this, template)
     this.parent = parent
-    var graph = this.getAttribute('for')
+    const graph = this.getAttribute('for')
     this.graph = document.getElementById(graph)
   }
 

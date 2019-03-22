@@ -80,7 +80,7 @@ class SetFormElement extends HTMLElement {
     super()
     const parent = initializeElement(this, template)
     this.form = parent.lastElementChild
-    var graph = this.getAttribute('for')
+    const graph = this.getAttribute('for')
     if (graph) {
       this.graph = document.getElementById(graph)
     }
