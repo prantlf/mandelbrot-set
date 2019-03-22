@@ -59,14 +59,16 @@ function iterationsToEscapeJuliaSet (iterationThreshold, zr, zi, kr, ki) {
 // set for each complex number between [-2 - 2i] and [2 + 2i].
 function computeIterations ({ iterationThreshold, width, height, offsetX, offsetY, scale, type, kr, ki }) {
   // Count of all pixels to compute iterations for.
-  const size = width * height
-  const message = `Computing ${size} points`
+  const pointCount = width * height
+  const message = `Computing ${pointCount} points`
   console.time(message)
-  const iterations = new Uint8Array(size)
+  const iterations = new Uint8Array(pointCount)
+  // Keep the width/height ratio of the set by cutting the content
+  // of the shorter size not to span over the full [-2, 2] interval.
+  const squareSize = Math.max(width, height)
   // Deltas to increment real and imaginary parts of the complex number by.
   // They lie between -2 and 2, which makes the width 4.
-  const deltaR = 4 / width / scale
-  const deltaI = 4 / height / scale
+  const delta = 4 / squareSize / scale
   // The computation starts at -2 and will continue to 2.
   const startR = -2 + offsetX
   let r
@@ -82,10 +84,10 @@ function computeIterations ({ iterationThreshold, width, height, offsetX, offset
     for (let x = 0; x < width; ++x) {
       iterations[row + x] = iterationsToEscapeSet(iterationThreshold, r, i, kr, ki)
       // Advance to the next pixel to compute the iterations for.
-      r += deltaR
+      r += delta
     }
     // Advance to next rows in the graph and in the array of pixels.
-    i += deltaI
+    i += delta
     row += width
   }
   console.timeEnd(message)
