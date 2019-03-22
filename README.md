@@ -14,11 +14,11 @@ Import the web component with Julia or Mandelbrot set graphs by including its mo
 
 ```html
 <script>
-window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/computer.js'
+window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/computer.js'
 </script>
-<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/mandelbrot-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set-graph.js"
         type="module"></script>
-<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/julia-set-graph.js"
+<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/julia-set-graph.js"
         type="module"></script>
 ```
 
@@ -42,7 +42,7 @@ Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp",
 In addition to Julia or Mandelbrot set graphs described above, import the web component with the configuration form by including its module at the end of the `body` element on your HTML page:
 
 ```html
-<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/mandelbrot-set-form.js"
+<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set-form.js"
         type="module"></script>
 ```
 
@@ -92,7 +92,7 @@ The page [mandelbrot.html](//github.com/prantlf/mandelbrot-set/blob/master/publi
 If you want to make panning and zoomin in Julia or Mandelbrot set graphs easier, import the web component with the manipulation toolbar by including its module at the end of the `body` element on your HTML page:
 
 ```html
-<script src="https://unpkg.com/mandelbrot-set@1.2.0/public/scripts/mandelbrot-set-toolbar.js"
+<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set-toolbar.js"
         type="module"></script>
 ```
 
@@ -134,13 +134,49 @@ If you use a stylesheet, which normalizes and styles plain HTML elements, like [
 
 If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
 
-
 ```html
 <mandelbrot-set-toolbar stylesheet="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
                      id="toolbar"></mandelbrot-set-toolbar>
 ```
 
-The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) demonstratest the usage of the toolbar including opening the configuration form in a modal dialog.
+The page [julia.html](//github.com/prantlf/mandelbrot-set/blob/master/public/julia.html) demonstrates the usage of the toolbar including opening the configuration form in a modal dialog.
+
+## All-In-One
+
+Import the web component with Julia or Mandelbrot set demonstration by including its module at the end of the `body` element on your HTML page.:
+
+```html
+<script>
+window.mandelbrotSetComputerUrl = 'https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/computer.js'
+</script>
+<script src="https://unpkg.com/mandelbrot-set@1.3.0/public/scripts/mandelbrot-set.js"
+        type="module"></script>
+```
+
+Place the web component where you want to see it and set its attributes. The following ones are the defaults:
+
+```html
+<mandelbrot-set type="mandelbrot"></mandelbrot-set>
+```
+
+Possible types are "mandelbrot" and "julia". This element includes controls for panning, zooming and configuring the graph.
+
+![Mandelbrot Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-demo.png)
+
+If you use a stylesheet, which normalizes and styles plain HTML elements, like [mini.css], it will apply to the form, fields and toolbar buttons too:
+
+```html
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+      rel="stylesheet">
+```
+
+If you want to isolate the styling of the form, set the stylesheet URL to the `stylesheet` attribute:
+
+```html
+<mandelbrot-set stylesheet="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"></mandelbrot-set-toolbar>
+```
+
+The page [demo.html](//github.com/prantlf/mandelbrot-set/blob/master/public/demo.html) demonstrates the usage of this element.
 
 ## Development
 
