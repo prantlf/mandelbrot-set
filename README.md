@@ -233,6 +233,14 @@ open http://localhost:8008/mandelbrot.html
 
 ![Jewels Dialog Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-set-jewels-dialog.png) 
 
+```html
+<mandelbrot-set
+  type="julia" kr="0.4" ki="0.4" palette="jewels" iteration-threshold="135" scale="40"
+  width="600" height="300" offset-x="1.798" offset-y="1.439"></mandelbrot-set>
+```
+
+![Julia All Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-all.png)
+
 [Node.js]: https://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [Julia]: https://prantlf.github.io/mandelbrot-set/public/julia.html
