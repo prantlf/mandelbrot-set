@@ -30,9 +30,11 @@ template.innerHTML = `<bytesize-icon-defaults size="16" weight="bold"></bytesize
     </button>
   </div>
 </div>
-<button data-name="open-settings" type="button" title="Open Settings">
-  <bytesize-icon name="settings"></bytesize-icon>
-</button>`
+<div class="button-group" style="margin-left: auto">
+  <button data-name="open-settings" type="button" title="Open Settings">
+    <bytesize-icon name="settings"></bytesize-icon>
+  </button>
+</div>`
 
 function panUp () {
   const graph = this.graph
@@ -168,6 +170,7 @@ function removeEventListeners (element) {
 class MandelbrotSetToolbarElement extends HTMLElement {
   constructor () {
     super()
+    this.setAttribute('style', 'display: flex')
     const parent = initializeElement(this, template)
     this.parent = parent
     const graph = this.getAttribute('for')

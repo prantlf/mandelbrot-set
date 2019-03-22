@@ -8,32 +8,19 @@ import { initializeElement } from './element-utils.js'
 function createTemplate (type) {
   const template = document.createElement('template')
   template.innerHTML = `<style>
-#main {
-  position: relative;
-  width: fit-content;
-}
-
-#graph {
-  margin: .5em;
-}
-
 #toolbar {
   position: absolute;
   bottom: .5em;
-  left: .5em;
-  width: calc(100% - 1em);
-  display: flex;
-  justify-content: space-between;
+  left: 0;
+  width: 100%;
 }
 </style>
 <dialog id="settings-dialog">
-<${type}-set-form stylesheet="assets/mini-default.min.css"
-  id="settings" for="graph"></${type}-set-form>
+  <${type}-set-form id="settings" for="graph"></${type}-set-form>
 </dialog>
-<div id="main">
+<div style="position: relative; width: fit-content;">
   <${type}-set-graph id="graph"></${type}-set-graph>
-  <mandelbrot-set-toolbar stylesheet="assets/mini-default.min.css"
-    id="toolbar" for="graph"></mandelbrot-set-toolbar>
+  <mandelbrot-set-toolbar id="toolbar" for="graph"></mandelbrot-set-toolbar>
 </div>`
   return template
 }

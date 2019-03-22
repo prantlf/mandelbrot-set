@@ -7,15 +7,9 @@ body {
   width: fit-content;
 }
 
-#graph {
-  margin: .5em;
-}
-
 #toolbar {
   position: absolute;
   bottom: .5em;
-  left: .5em;
-  width: calc(100% - 1em);
-  display: flex;
-  justify-content: space-between;
+  left: 0;
+  width: 100%;
 }

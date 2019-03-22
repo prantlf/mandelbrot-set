@@ -6,7 +6,3 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-
-#graph {
-  margin: .5em;
-}
