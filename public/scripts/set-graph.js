@@ -166,8 +166,8 @@ class SetGraphElement extends HTMLElement {
 }
 
 const observedAttributes = [
-  'width', 'height', 'palette', 'iteration-threshold',
-  'offset-x', 'offset-y', 'scale'
+  'palette', 'iteration-threshold', 'scale',
+  'width', 'height', 'offset-x', 'offset-y'
 ]
 
 export { SetGraphElement, observedAttributes }
