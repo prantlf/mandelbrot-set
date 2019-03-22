@@ -2,8 +2,6 @@ import { initializeElement } from './element-utils.js'
 
 const template = document.createElement('template')
 template.innerHTML = `<form>
-  <label for="iteration-threshold">Maximum iterations:</label>
-  <input id="iteration-threshold" type="number" value="20">
   <fieldset>
     <legend>Colour palette</legend>
     <input id="palette-grayscale" type="radio" name="palette" checked>
@@ -28,10 +26,20 @@ template.innerHTML = `<form>
     <input id="palette-sky" type="radio" name="palette">
     <label for="palette-sky">Sky</label>
   </fieldset>
-  <label for="size">Size [px]:</label>
-  <input id="size" type="number" value="400">
-  <label for="scale">Scale:</label>
-  <input id="scale" type="number" value="1" step="any">
+  <fieldset>
+    <legend>Resolution</legend>
+    <label for="iteration-threshold">Maximum iterations:</label>
+    <input id="iteration-threshold" type="number" value="20">
+    <label for="scale">Scale:</label>
+    <input id="scale" type="number" value="1" step="any">
+  </fieldset>
+  <fieldset>
+    <legend>Canvas size [px]</legend>
+    <label for="width">Width:</label>
+    <input id="width" type="number" value="400">
+    <label for="height">Height:</label>
+    <input id="height" type="number" value="400">
+  </fieldset>
   <fieldset>
     <legend>Offset from the top-left corner [px]</legend>
     <label for="offset-x">X:</label>
@@ -116,22 +124,24 @@ class SetFormElement extends HTMLElement {
   getParameters () {
     const form = this.form
     const palette = form.querySelector('input[name="palette"]:checked').id.substr(8)
-    const size = +form.querySelector('#size').value
     const iterationThreshold = +form.querySelector('#iteration-threshold').value
+    const scale = +form.querySelector('#scale').value
+    const width = +form.querySelector('#width').value
+    const height = +form.querySelector('#height').value
     const offsetX = +form.querySelector('#offset-x').value
     const offsetY = +form.querySelector('#offset-y').value
-    const scale = +form.querySelector('#scale').value
-    return { palette, iterationThreshold, size, offsetX, offsetY, scale }
+    return { palette, iterationThreshold, scale, width, height, offsetX, offsetY }
   }
 
-  setParameters ({ palette, iterationThreshold, size, offsetX, offsetY, scale }) {
+  setParameters ({ palette, iterationThreshold, scale, width, height, offsetX, offsetY }) {
     const form = this.form
     form.querySelector(`#palette-${palette}`).checked = true
-    form.querySelector('#size').value = size
     form.querySelector('#iteration-threshold').value = iterationThreshold
+    form.querySelector('#scale').value = scale
+    form.querySelector('#width').value = width
+    form.querySelector('#height').value = height
     form.querySelector('#offset-x').value = offsetX
     form.querySelector('#offset-y').value = offsetY
-    form.querySelector('#scale').value = scale
   }
 }
 

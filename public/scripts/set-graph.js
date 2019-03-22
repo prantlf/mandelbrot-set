@@ -74,12 +74,11 @@ function clearCanvas () {
 const attributeToParameter = {
   palette: 'palette',
   'iteration-threshold': 'iterationThreshold',
-  size: 'size',
-  width: 'size',
-  height: 'size',
+  scale: 'scale',
+  width: 'width',
+  height: 'height',
   'offset-x': 'offsetX',
-  'offset-y': 'offsetY',
-  scale: 'scale'
+  'offset-y': 'offsetY'
 }
 
 class SetGraphElement extends HTMLElement {
@@ -127,19 +126,19 @@ class SetGraphElement extends HTMLElement {
 
   getParameters () {
     const palette = this.getAttribute('palette') || 'grayscale'
+    const iterationThreshold = +(this.getAttribute('iteration-threshold') || 20)
+    const scale = +(this.getAttribute('scale') || 1)
     const width = +(this.getAttribute('width') || 400)
     const height = +(this.getAttribute('height') || 400)
-    const iterationThreshold = +(this.getAttribute('iteration-threshold') || 20)
     const offsetX = +(this.getAttribute('offset-x') || 0)
     const offsetY = +(this.getAttribute('offset-y') || 0)
-    const scale = +(this.getAttribute('scale') || 1)
-    return { palette, iterationThreshold, width, height, size: width, offsetX, offsetY, scale }
+    return { palette, iterationThreshold, scale, width, height, offsetX, offsetY }
   }
 
-  setParameters ({ palette, iterationThreshold, size, offsetX, offsetY, scale }) {
+  setParameters ({ palette, iterationThreshold, scale, width, height, offsetX, offsetY }) {
     this.setAttribute('palette', palette)
-    this.setAttribute('width', size)
-    this.setAttribute('height', size)
+    this.setAttribute('width', width)
+    this.setAttribute('height', height)
     this.setAttribute('iteration-threshold', iterationThreshold)
     this.setAttribute('offset-x', offsetX)
     this.setAttribute('offset-y', offsetY)
