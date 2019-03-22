@@ -6,7 +6,7 @@
 [![devDependency Status](https://david-dm.org/prantlf/mandelbrot-set/dev-status.svg)](https://david-dm.org/prantlf/mandelbrot-set#info=devDependencies)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a web page. See the [sources](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) too.
+Web components and a web worker for painting [Julia] and [Mandelbrot] sets on a web page, [including interactive controls](https://prantlf.github.io/mandelbrot-set/public/demo.html). See the [sources](//github.com/prantlf/mandelbrot-set/blob/master/public/mandelbrot.html) too.
 
 ## Usage
 
