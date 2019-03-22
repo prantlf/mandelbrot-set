@@ -6,10 +6,11 @@ readFile = promisify(readFile)
 writeFile = promisify(writeFile)
 
 const stylesheetName = 'mini-default'
+const assetDir = 'public/assets'
 const inputName = join(__dirname, `../node_modules/mini.css/dist/${stylesheetName}.css`)
-const outputName = join(__dirname, `../public/assets/${stylesheetName}.css`)
-const minifiedName = join(__dirname, `../public/assets/${stylesheetName}.min.css`)
-const sourceMapName = join(__dirname, `../public/assets/${stylesheetName}.min.css.map`)
+const outputName = join(__dirname, `../${assetDir}/${stylesheetName}.css`)
+const minifiedName = join(__dirname, `../${assetDir}/${stylesheetName}.min.css`)
+const sourceMapName = join(__dirname, `../${assetDir}/${stylesheetName}.min.css.map`)
 
 function removeIcons (content) {
   const lines = content.split('\n')
@@ -51,7 +52,7 @@ async function saveStylesheet ({ original, minified, sourceMap }) {
   await writeFile(sourceMapName, sourceMap)
 }
 
-console.log(`Writing "${stylesheetName}.css", "${stylesheetName}.min.css" and "${stylesheetName}.min.css.map" to "public/assets"...`)
+console.log(`Writing "${stylesheetName}.css", "${stylesheetName}.min.css" and "${stylesheetName}.min.css.map" to "${assetDir}"...`)
 readFile(inputName, { encoding: 'utf-8' })
   .then(removeIcons)
   .then(minifyStylesheet)
