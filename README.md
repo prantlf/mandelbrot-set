@@ -76,13 +76,13 @@ Place the web component where you want to see it and set its attributes. The fol
 
 ```html
 <mandelbrot-set-graph
-  id="graph" width="400" height="400" scale="1"
-  offset-x="0" offset-y="0" palette="grayscale"
-  iteration-threshold="20"></mandelbrot-set-graph>
+  palette="grayscale" iteration-threshold="20" scale="1"
+  width="400" height="400" offset-x="0" offset-y="0"
+  id="graph"></mandelbrot-set-graph>
 <julia-set-graph
-  id="graph" width="400" height="400" kr="0.4" ki="0.4"
-  scale="1" offset-x="0" offset-y="0" palette="grayscale"
-  iteration-threshold="20"></julia-set-graph>
+  palette="grayscale" iteration-threshold="20" scale="1"
+  width="400" height="400" offset-x="0" offset-y="0"
+  kr="0.4" ki="0.4" id="graph"></julia-set-graph>
 ```
 
 Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp", "onion", "poison", "garden", and "sky".
@@ -99,7 +99,7 @@ In addition to Julia or Mandelbrot set graphs described above, import the web co
   type="module"></script>
 ```
 
-Place the web component where you want to see the form:
+Place the web component where you want to see it and set its attributes. The attribute `for` may to point to a graph element by its ID, if you want to wire them automatically:
 
 ```html
 <mandelbrot-set-form id="settings" for="graph"></mandelbrot-set-form>
@@ -108,7 +108,7 @@ Place the web component where you want to see the form:
 
 ![Mandelbrot Configuration Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-form.png) ![Julia Configuration Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/julia-form.png)
 
-If you point the `for` attribute to the element with the graph, the form will be wired with it automaticall, so that changes of fiewld values will result in updating the graph. If you do not, you will be able to reuse the form for multiple graphs, but you will have to wire it to them manually:
+If you point the `for` attribute to the element with the graph, the form will be wired with it automatically, so that changes of field values will result in updating the graph. If you do not, you will be able to reuse the form for multiple graphs, but you will have to wire it to them manually:
 
 ```js
 addEventListener('DOMContentLoaded', function () {
@@ -144,10 +144,12 @@ If you want to make panning and zoomin in Julia or Mandelbrot set graphs easier,
   type="module"></script>
 ```
 
-Place the web component where you want to see the toolbar:
+Place the web component where you want to see it and set its attributes. The attribute `for` has to point to a graph element by its ID. The following attribute values are defaults:
 
 ```html
-<mandelbrot-set-toolbar id="toolbar" for="graph"></mandelbrot-set-toolbar>
+<mandelbrot-set-toolbar
+  panning="true" zooming="true" settings="true"
+  id="toolbar" for="graph"></mandelbrot-set-toolbar>
 ```
 
 ![Mandelbrot Toolbar Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-toolbar.png)
@@ -193,13 +195,17 @@ Import the web component with Julia or Mandelbrot set demonstration by including
   type="module"></script>
 ```
 
-Place the web component where you want to see it and set its attributes. The following ones are the defaults:
+Place the web component where you want to see it and set its attributes. The attribute`type` can be set only once with the initial HTML markup. The following attribute values are the defaults:
 
 ```html
-<mandelbrot-set type="mandelbrot"></mandelbrot-set>
+<mandelbrot-set
+  palette="grayscale" iteration-threshold="20" scale="1"
+  width="400" height="400" offset-x="0" offset-y="0"
+  panning="true" zooming="true" settings="true"
+  type="mandelbrot"></mandelbrot-set>
 ```
 
-Possible types are "mandelbrot" and "julia". This element includes controls for panning, zooming and configuring the graph.
+Possible types are "mandelbrot" and "julia". Possible colour palettes are "grayscale", "jewels", "fiety", "rainbow", "sharp", "onion", "poison", "garden", and "sky". This element includes controls for panning, zooming and configuring the graph.
 
 ![Mandelbrot Set Example](https://raw.githubusercontent.com/prantlf/mandelbrot-set/master/pictures/mandelbrot-demo.png)
 

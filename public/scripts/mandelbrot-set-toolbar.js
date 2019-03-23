@@ -4,7 +4,7 @@ import { initializeElement } from './element-utils.js'
 const template = document.createElement('template')
 template.innerHTML = `<bytesize-icon-defaults size="16" weight="bold"></bytesize-icon-defaults>
 <div style="display: flex">
-  <div class="button-group">
+  <div data-name="panning" class="button-group">
     <button data-name="pan-up" type="button" title="Pan Up">
       <bytesize-icon name="arrow-top"></bytesize-icon>
     </button>
@@ -18,7 +18,7 @@ template.innerHTML = `<bytesize-icon-defaults size="16" weight="bold"></bytesize
       <bytesize-icon name="arrow-right"></bytesize-icon>
     </button>
   </div>
-  <div class="button-group">
+  <div data-name="zooming" class="button-group">
     <button data-name="zoom-in" type="button" title="Zoom In">
       <bytesize-icon name="plus"></bytesize-icon>
     </button>
@@ -30,7 +30,7 @@ template.innerHTML = `<bytesize-icon-defaults size="16" weight="bold"></bytesize
     </button>
   </div>
 </div>
-<div class="button-group" style="margin-left: auto">
+<div data-name="settings" class="button-group" style="margin-left: auto">
   <button data-name="open-settings" type="button" title="Open Settings">
     <bytesize-icon name="settings"></bytesize-icon>
   </button>
@@ -143,6 +143,10 @@ const buttonHandlers = {
 }
 const buttonNames = Object.keys(buttonHandlers)
 
+const buttonGroups = [
+  'panning', 'zooming', 'settings'
+]
+
 function addEventListener (element, button, eventHandler) {
   const boundEventHandler = eventHandler.bind(element)
   button.clickHandler = boundEventHandler
@@ -167,10 +171,17 @@ function removeEventListeners (element) {
   }, element.parent)
 }
 
+function hideButtonGroup (element, groupName, flag) {
+  if (flag === 'false') {
+    const selector = `[data-name=${groupName}]`
+    element.parent.querySelector(selector).style.display = 'none'
+  }
+}
+
 class MandelbrotSetToolbarElement extends HTMLElement {
   constructor () {
     super()
-    this.setAttribute('style', 'display: flex')
+    this.style.display = 'flex'
     const parent = initializeElement(this, template)
     this.parent = parent
     const graph = this.getAttribute('for')
@@ -183,6 +194,16 @@ class MandelbrotSetToolbarElement extends HTMLElement {
 
   disconnectedCallback () {
     removeEventListeners(this)
+  }
+
+  attributeChangedCallback (name, oldValue, newValue) {
+    if (buttonGroups.includes(name)) {
+      hideButtonGroup(this, name, newValue)
+    }
+  }
+
+  static get observedAttributes () {
+    return buttonGroups
   }
 }
 

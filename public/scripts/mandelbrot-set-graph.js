@@ -5,7 +5,9 @@ class MandelbrotSetGraphElement extends SetGraphElement {
     super('mandelbrot')
   }
 
-  static get observedAttributes () { return observedAttributes }
+  static get observedAttributes () {
+    return observedAttributes
+  }
 }
 
 customElements.define('mandelbrot-set-graph', MandelbrotSetGraphElement)

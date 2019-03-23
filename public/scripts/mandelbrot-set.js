@@ -68,23 +68,28 @@ function removeEventListeners (element) {
   }
 }
 
-const supportedAttributes = [
+const graphAttributes = [
   'palette', 'iteration-threshold', 'scale',
   'width', 'height', 'offset-x', 'offset-y', 'kr', 'ki'
 ]
+const toolbarAttributes = [
+  'panning', 'zooming', 'settings'
+]
 
-function propagateAttribute (graph, attributeName) {
+function propagateAttribute (target, attributeName) {
   const value = this.getAttribute(attributeName)
   if (value != null) {
-    graph.setAttribute(attributeName, value)
+    target.setAttribute(attributeName, value)
   }
 }
 
 function propagateAttributes (element, parent) {
   const graph = parent.querySelector('#graph')
   graph.suppressUpdates()
-  supportedAttributes.forEach(propagateAttribute.bind(element, graph))
+  graphAttributes.forEach(propagateAttribute.bind(element, graph))
   graph.resumeUpdates()
+  const toolbar = parent.querySelector('#toolbar')
+  toolbarAttributes.forEach(propagateAttribute.bind(element, toolbar))
 }
 
 class MandelbrotSetElement extends HTMLElement {

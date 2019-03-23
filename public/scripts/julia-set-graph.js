@@ -21,7 +21,9 @@ class JuliaSetGraphElement extends SetGraphElement {
     this.setAttribute('ki', ki)
   }
 
-  static get observedAttributes () { return observedJuliaAttributes }
+  static get observedAttributes () {
+    return observedJuliaAttributes
+  }
 }
 
 customElements.define('julia-set-graph', JuliaSetGraphElement)
