@@ -15,12 +15,12 @@ function createTemplate (type) {
   width: 100%;
 }
 </style>
-<dialog id="settings-dialog">
-  <${type}-set-form id="settings" for="graph"></${type}-set-form>
+<dialog data-id="settings-dialog">
+  <${type}-set-form data-id="settings" for="graph"></${type}-set-form>
 </dialog>
 <div style="position: relative; width: fit-content;">
   <${type}-set-graph id="graph"></${type}-set-graph>
-  <mandelbrot-set-toolbar id="toolbar" for="graph"></mandelbrot-set-toolbar>
+  <mandelbrot-set-toolbar data-id="toolbar" for="graph"></mandelbrot-set-toolbar>
 </div>`
   return template
 }
@@ -36,9 +36,9 @@ function addEventListener (target, eventName, eventHandler) {
 }
 
 function addEventListeners (element) {
-  const toolbar = element.querySelector('#toolbar')
-  const dialog = element.querySelector('#settings-dialog')
-  const form = element.querySelector('#settings')
+  const toolbar = element.querySelector('[data-id=toolbar]')
+  const dialog = element.querySelector('[data-id=settings-dialog]')
+  const form = element.querySelector('[data-id=settings]')
 
   if (dialog.showModal) {
     element.toolbar = toolbar
@@ -88,7 +88,7 @@ function propagateAttributes (element, parent) {
   graph.suppressUpdates()
   graphAttributes.forEach(propagateAttribute.bind(element, graph))
   graph.resumeUpdates()
-  const toolbar = parent.querySelector('#toolbar')
+  const toolbar = parent.querySelector('[data-id=toolbar]')
   toolbarAttributes.forEach(propagateAttribute.bind(element, toolbar))
 }
 
