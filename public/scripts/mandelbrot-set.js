@@ -8,19 +8,19 @@ import { initializeElement } from './element-utils.js'
 function createTemplate (type) {
   const template = document.createElement('template')
   template.innerHTML = `<style>
-#toolbar {
+mandelbrot-set-toolbar {
   position: absolute;
   bottom: .5em;
   left: 0;
   width: 100%;
 }
 </style>
-<dialog data-id="settings-dialog">
-  <${type}-set-form data-id="settings" for="graph"></${type}-set-form>
+<dialog>
+  <${type}-set-form></${type}-set-form>
 </dialog>
 <div style="position: relative; width: fit-content;">
-  <${type}-set-graph id="graph"></${type}-set-graph>
-  <mandelbrot-set-toolbar data-id="toolbar" for="graph"></mandelbrot-set-toolbar>
+  <${type}-set-graph></${type}-set-graph>
+  <mandelbrot-set-toolbar></mandelbrot-set-toolbar>
 </div>`
   return template
 }
@@ -36,9 +36,9 @@ function addEventListener (target, eventName, eventHandler) {
 }
 
 function addEventListeners (element) {
-  const toolbar = element.querySelector('[data-id=toolbar]')
-  const dialog = element.querySelector('[data-id=settings-dialog]')
-  const form = element.querySelector('[data-id=settings]')
+  const toolbar = element.querySelector('mandelbrot-set-toolbar')
+  const dialog = element.querySelector('dialog')
+  const form = element.querySelector(`${element.type}-set-form`)
 
   if (dialog.showModal) {
     element.toolbar = toolbar
@@ -84,11 +84,14 @@ function propagateAttribute (target, attributeName) {
 }
 
 function propagateAttributes (element, parent) {
-  const graph = parent.querySelector('#graph')
+  const graph = parent.querySelector(`${element.type}-set-graph`)
   graph.suppressUpdates()
   graphAttributes.forEach(propagateAttribute.bind(element, graph))
   graph.resumeUpdates()
-  const toolbar = parent.querySelector('[data-id=toolbar]')
+  const form = parent.querySelector(`${element.type}-set-form`)
+  form.bindGraph(graph)
+  const toolbar = parent.querySelector('mandelbrot-set-toolbar')
+  toolbar.bindGraph(graph)
   toolbarAttributes.forEach(propagateAttribute.bind(element, toolbar))
 }
 
@@ -96,6 +99,7 @@ class MandelbrotSetElement extends HTMLElement {
   constructor () {
     super()
     const type = this.getAttribute('type') || 'mandelbrot'
+    this.type = type
     const parent = initializeElement(this, templates[type])
     propagateAttributes(this, parent)
   }

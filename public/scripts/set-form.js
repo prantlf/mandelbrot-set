@@ -1,51 +1,57 @@
-import { initializeElement } from './element-utils.js'
+import { initializeElement, ensureUniqueFieldIds } from './element-utils.js'
 
 const template = document.createElement('template')
-template.innerHTML = `<form>
-  <fieldset>
+template.innerHTML = `<style>
+[data-id=palette] > label {
+  min-width: 5em;
+  display: inline-block;
+}
+</style>
+<form>
+  <fieldset data-id="palette">
     <legend>Colour palette</legend>
-    <input id="palette-grayscale" type="radio" name="palette" checked>
-    <label for="palette-grayscale">Grayscale</label>
-    <input id="palette-jewels" type="radio" name="palette">
-    <label for="palette-jewels">Jewels</label>
-    <input id="palette-fiery" type="radio" name="palette">
-    <label for="palette-fiery">Fiery</label>
-    <input id="palette-rainbow" type="radio" name="palette">
-    <label for="palette-rainbow">Rainbow</label>
-    <input id="palette-sharp" type="radio" name="palette">
-    <label for="palette-sharp">Sharp</label>
+    <input data-id="palette-grayscale" type="radio" name="palette" checked>
+    <label>Grayscale</label>
+    <input data-id="palette-jewels" type="radio" name="palette">
+    <label>Jewels</label>
+    <input data-id="palette-fiery" type="radio" name="palette">
+    <label>Fiery</label>
+    <input data-id="palette-rainbow" type="radio" name="palette">
+    <label>Rainbow</label>
+    <input data-id="palette-sharp" type="radio" name="palette">
+    <label>Sharp</label>
     <br>
-    <input id="palette-onion" type="radio" name="palette">
-    <label for="palette-onion">Onion</label>
-    <input id="palette-ocean" type="radio" name="palette">
-    <label for="palette-ocean">Ocean</label>
-    <input id="palette-poison" type="radio" name="palette">
-    <label for="palette-poison">Poison</label>
-    <input id="palette-garden" type="radio" name="palette">
-    <label for="palette-garden">Garden</label>
-    <input id="palette-sky" type="radio" name="palette">
-    <label for="palette-sky">Sky</label>
+    <input data-id="palette-onion" type="radio" name="palette">
+    <label>Onion</label>
+    <input data-id="palette-ocean" type="radio" name="palette">
+    <label>Ocean</label>
+    <input data-id="palette-poison" type="radio" name="palette">
+    <label>Poison</label>
+    <input data-id="palette-garden" type="radio" name="palette">
+    <label>Garden</label>
+    <input data-id="palette-sky" type="radio" name="palette">
+    <label>Sky</label>
   </fieldset>
   <fieldset>
     <legend>Resolution</legend>
-    <label for="iteration-threshold">Maximum iterations:</label>
-    <input id="iteration-threshold" type="number" value="20">
-    <label for="scale">Scale:</label>
-    <input id="scale" type="number" value="1" step="any">
+    <label>Maximum iterations:</label>
+    <input data-id="iteration-threshold" type="number" value="20">
+    <label>Scale:</label>
+    <input data-id="scale" type="number" value="1" step="any">
   </fieldset>
   <fieldset>
     <legend>Canvas size [px]</legend>
-    <label for="width">Width:</label>
-    <input id="width" type="number" value="400">
-    <label for="height">Height:</label>
-    <input id="height" type="number" value="400">
+    <label>Width:</label>
+    <input data-id="width" type="number" value="400">
+    <label>Height:</label>
+    <input data-id="height" type="number" value="400">
   </fieldset>
   <fieldset>
     <legend>Offset from the top-left corner [px]</legend>
-    <label for="offset-x">X:</label>
-    <input id="offset-x" type="number" value="0" step="any">
-    <label for="offset-y">Y:</label>
-    <input id="offset-y" type="number" value="0" step="any">
+    <label>X:</label>
+    <input data-id="offset-x" type="number" value="0" step="any">
+    <label>Y:</label>
+    <input data-id="offset-y" type="number" value="0" step="any">
   </fieldset>
   <button type="submit" class="button">Apply</button>
 </form>`
@@ -83,14 +89,28 @@ function removeGraphObserver (element) {
   element.observer.disconnect()
 }
 
+function bindGraph (element, graph) {
+  graph = document.getElementById(graph)
+  element.bindGraph(graph)
+}
+
+const fields = [
+  'iteration-threshold', 'scale', 'width', 'height', 'offset-x', 'offset-y',
+  'palette-grayscale', 'palette-jewels', 'palette-fiery', 'palette-rainbow', 'palette-sharp',
+  'palette-onion', 'palette-ocean', 'palette-poison', 'palette-garden', 'palette-sky'
+]
+
 class SetFormElement extends HTMLElement {
   constructor () {
     super()
     const parent = initializeElement(this, template)
-    this.form = parent.lastElementChild
+    this.parent = parent
+    const form = parent.lastElementChild
+    this.form = form
+    this.fields = ensureUniqueFieldIds(form, fields)
     const graph = this.getAttribute('for')
     if (graph) {
-      this.graph = document.getElementById(graph)
+      bindGraph(this, graph)
     }
   }
 
@@ -105,6 +125,22 @@ class SetFormElement extends HTMLElement {
     removeFormListener(this)
     if (this.graph) {
       removeGraphObserver(this)
+    }
+  }
+
+  attributeChangedCallback (name, oldValue, newValue) {
+    if (name === 'for') {
+      bindGraph(this, newValue)
+    }
+  }
+
+  bindGraph (graph) {
+    this.graph = graph
+    if (this.applyThisSettings) {
+      if (this.observer) {
+        removeGraphObserver(this)
+      }
+      addGraphObserver(this)
     }
   }
 
@@ -123,25 +159,30 @@ class SetFormElement extends HTMLElement {
 
   getParameters () {
     const form = this.form
-    const palette = form.querySelector('input[name="palette"]:checked').id.substr(8)
-    const iterationThreshold = +form.querySelector('#iteration-threshold').value
-    const scale = +form.querySelector('#scale').value
-    const width = +form.querySelector('#width').value
-    const height = +form.querySelector('#height').value
-    const offsetX = +form.querySelector('#offset-x').value
-    const offsetY = +form.querySelector('#offset-y').value
+    const fields = this.fields
+    const palette = form
+      .querySelector('input[name="palette"]:checked')
+      .getAttribute('data-id')
+      .substr(8)
+    const iterationThreshold = +fields['iteration-threshold'].value
+    const scale = +fields['scale'].value
+    const width = +fields['width'].value
+    const height = +fields['height'].value
+    const offsetX = +fields['offset-x'].value
+    const offsetY = +fields['offset-y'].value
     return { palette, iterationThreshold, scale, width, height, offsetX, offsetY }
   }
 
   setParameters ({ palette, iterationThreshold, scale, width, height, offsetX, offsetY }) {
     const form = this.form
-    form.querySelector(`#palette-${palette}`).checked = true
-    form.querySelector('#iteration-threshold').value = iterationThreshold
-    form.querySelector('#scale').value = scale
-    form.querySelector('#width').value = width
-    form.querySelector('#height').value = height
-    form.querySelector('#offset-x').value = offsetX
-    form.querySelector('#offset-y').value = offsetY
+    const fields = this.fields
+    form.querySelector(`[data-id=palette-${palette}]`).checked = true
+    fields['iteration-threshold'].value = iterationThreshold
+    fields['scale'].value = scale
+    fields['width'].value = width
+    fields['height'].value = height
+    fields['offset-x'].value = offsetX
+    fields['offset-y'].value = offsetY
   }
 }
 

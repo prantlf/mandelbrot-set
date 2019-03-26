@@ -178,6 +178,11 @@ function hideButtonGroup (element, groupName, flag) {
   }
 }
 
+function bindGraph (element, graph) {
+  graph = document.getElementById(graph)
+  element.bindGraph(graph)
+}
+
 class MandelbrotSetToolbarElement extends HTMLElement {
   constructor () {
     super()
@@ -185,7 +190,9 @@ class MandelbrotSetToolbarElement extends HTMLElement {
     const parent = initializeElement(this, template)
     this.parent = parent
     const graph = this.getAttribute('for')
-    this.graph = document.getElementById(graph)
+    if (graph) {
+      bindGraph(this, graph)
+    }
   }
 
   connectedCallback () {
@@ -197,9 +204,15 @@ class MandelbrotSetToolbarElement extends HTMLElement {
   }
 
   attributeChangedCallback (name, oldValue, newValue) {
-    if (buttonGroups.includes(name)) {
+    if (name === 'for') {
+      bindGraph(this, newValue)
+    } else if (buttonGroups.includes(name)) {
       hideButtonGroup(this, name, newValue)
     }
+  }
+
+  bindGraph (graph) {
+    this.graph = graph
   }
 
   static get observedAttributes () {

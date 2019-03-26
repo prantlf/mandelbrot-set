@@ -1,31 +1,38 @@
 import { SetFormElement } from './set-form.js'
+import { ensureUniqueFieldIds } from './element-utils.js'
 
 const template = document.createElement('template')
 template.innerHTML = `<fieldset>
   <legend>Constant for the Julia set [X + Yi]</legend>
-  <label for="k-r">X:</label>
-  <input id="k-r" type="number" value="0.4" step="any">
-  <label for="k-i">Y:</label>
-  <input id="k-i" type="number" value="0.4" step="any">
+  <label>X:</label>
+  <input data-id="k-r" type="number" value="0.4" step="any">
+  <label>Y:</label>
+  <input data-id="k-i" type="number" value="0.4" step="any">
 </fieldset>`
+
+const fields = [ 'k-r', 'k-i' ]
 
 class JuliaSetFormElement extends SetFormElement {
   constructor () {
     super()
-    this.form.insertBefore(template.content.cloneNode(true), this.form.firstElementChild)
+    const form = this.form
+    form.insertBefore(template.content.cloneNode(true), form.firstElementChild)
+    this.fields = ensureUniqueFieldIds(form, fields)
   }
 
   getParameters () {
     const parameters = super.getParameters()
-    parameters.kr = +this.form.querySelector('#k-r').value
-    parameters.ki = +this.form.querySelector('#k-i').value
+    const fields = this.fields
+    parameters.kr = +fields['k-r'].value
+    parameters.ki = +fields['k-i'].value
     return parameters
   }
 
   setParameters (parameters) {
     super.setParameters(parameters)
-    this.form.querySelector('#k-r').value = parameters.kr
-    this.form.querySelector('#k-i').value = parameters.ki
+    const fields = this.fields
+    fields['k-r'].value = parameters.kr
+    fields['k-i'].value = parameters.ki
   }
 }
 
