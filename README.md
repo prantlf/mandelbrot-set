@@ -23,11 +23,11 @@ Place elements of your choice to your web page and load their script at the end 
 
 ```html
 <mandelbrot-set
-  stylesheet="https://unpkg.com/mandelbrot-set@2.1.0/public/assets/mini-default.min.css"
+  stylesheet="https://unpkg.com/mandelbrot-set@2.2.0/public/assets/mini-default.min.css"
   palette="jewels" iteration-threshold="150" scale="50"
   width="600" height="300" offset-x="0.465" offset-y="1.980"></mandelbrot-set>
 <script
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-all.min.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/mandelbrot-all.min.js"
   type="module"></script>
 ```
 
@@ -39,7 +39,7 @@ You can import single components as written below, or you can use the single min
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-all.min.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/mandelbrot-all.min.js"
   type="module"></script>
 ```
 
@@ -47,7 +47,7 @@ Before you insert any other custom element, you may need to set the URL to the w
 
 ```html
 <mandelbrot-set-computer
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/computer.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/computer.js"
   ></mandelbrot-set-computer>
 ```
 
@@ -65,10 +65,10 @@ Import the web component with Julia or Mandelbrot set graphs by including its mo
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set-graph.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/mandelbrot-set-graph.js"
   type="module"></script>
 <script
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/julia-set-graph.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/julia-set-graph.js"
   type="module"></script>
 ```
 
@@ -95,7 +95,7 @@ In addition to Julia or Mandelbrot set graphs described above, import the web co
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set-form.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/mandelbrot-set-form.js"
   type="module"></script>
 ```
 
@@ -140,7 +140,7 @@ If you want to make panning and zoomin in Julia or Mandelbrot set graphs easier,
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set-toolbar.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/mandelbrot-set-toolbar.js"
   type="module"></script>
 ```
 
@@ -191,7 +191,7 @@ Import the web component with Julia or Mandelbrot set demonstration by including
 
 ```html
 <script
-  src="https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/mandelbrot-set.js"
+  src="https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/mandelbrot-set.js"
   type="module"></script>
 ```
 

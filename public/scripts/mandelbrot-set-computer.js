@@ -1,4 +1,4 @@
-const defaultComputerUrl = 'https://unpkg.com/mandelbrot-set@2.1.0/public/scripts/computer.js'
+const defaultComputerUrl = 'https://unpkg.com/mandelbrot-set@2.2.0/public/scripts/computer.js'
 let computerUrl = defaultComputerUrl
 
 function getComputerUrl () {
