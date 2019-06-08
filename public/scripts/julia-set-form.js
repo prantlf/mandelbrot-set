@@ -17,7 +17,8 @@ class JuliaSetFormElement extends SetFormElement {
     super()
     const form = this.form
     form.insertBefore(template.content.cloneNode(true), form.firstElementChild)
-    this.fields = ensureUniqueFieldIds(form, fields)
+    const juliaFields = ensureUniqueFieldIds(form, fields)
+    Object.assign(this.fields, juliaFields)
   }
 
   getParameters () {
