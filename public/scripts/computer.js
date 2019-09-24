@@ -98,7 +98,7 @@ function receiveRequest ({ data }) {
   const { number } = data
   const iterations = computeIterations(data)
   const buffer = iterations.buffer
-  postMessage({ number, buffer }, [ buffer ])
+  postMessage({ number, buffer }, [buffer])
 }
 
 addEventListener('message', receiveRequest)

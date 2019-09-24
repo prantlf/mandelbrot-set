@@ -5,7 +5,7 @@ function fillHslPalette (palette, colorCount, assignColor) {
   let intensity = 1
   for (let i = 0, length = palette.length; i < length; i += 3) {
     intensity -= step
-    const [ r, g, b ] = assignColor(intensity)
+    const [r, g, b] = assignColor(intensity)
     palette[i] = Math.floor(r)
     palette[i + 1] = Math.floor(g)
     palette[i + 2] = Math.floor(b)
@@ -17,7 +17,7 @@ function fillHsvPalette (palette, colorCount, assignColor) {
   let intensity = 1
   for (let i = 0, length = palette.length; i < length; i += 3) {
     intensity -= step
-    const [ r, g, b ] = assignColor(intensity)
+    const [r, g, b] = assignColor(intensity)
     palette[i] = Math.floor(r)
     palette[i + 1] = Math.floor(g)
     palette[i + 2] = Math.floor(b)

@@ -1,16 +1,10 @@
-sudo: false
 language: node_js
-cache:
-  directories:
-    - ~/.npm
 notifications:
   email: false
 node_js:
-  - '12'
-  - '10'
-  - '8'
-before_install:
-  - npm i -g npm
+  - node
+  - lts/*
+  - 8
 after_success:
   - npx semantic-release
 branches:

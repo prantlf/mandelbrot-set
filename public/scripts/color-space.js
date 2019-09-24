@@ -13,7 +13,7 @@ function hsl2rgb (h, s, l) {
     b = hue2rgb(p, q, h - 1 / 3)
   }
 
-  return [ r * 255, g * 255, b * 255 ]
+  return [r * 255, g * 255, b * 255]
 
   function hue2rgb (p, q, t) {
     if (t < 0) {
@@ -80,7 +80,7 @@ function hsv2rgb (h, s, v) {
   g = (g + m) * 255
   b = (b + m) * 255
 
-  return [ r, g, b ]
+  return [r, g, b]
 }
 
 export { hsl2rgb, hsv2rgb }

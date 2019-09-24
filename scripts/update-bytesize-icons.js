@@ -7,7 +7,7 @@ writeFile = promisify(writeFile)
 
 const scriptName = 'bytesize-icon-elements'
 const assetDir = 'public/assets'
-const inputName = join(__dirname, `../node_modules/bytesize-icon-elements/index.js`)
+const inputName = join(__dirname, '../node_modules/bytesize-icon-elements/index.js')
 const outputName = join(__dirname, `../${assetDir}/${scriptName}.js`)
 const minifiedName = join(__dirname, `../${assetDir}/${scriptName}.min.js`)
 const sourceMapName = join(__dirname, `../${assetDir}/${scriptName}.min.js.map`)

@@ -165,9 +165,9 @@ class SetFormElement extends HTMLElement {
       .getAttribute('data-id')
       .substr(8)
     const iterationThreshold = +fields['iteration-threshold'].value
-    const scale = +fields['scale'].value
-    const width = +fields['width'].value
-    const height = +fields['height'].value
+    const scale = +fields.scale.value
+    const width = +fields.width.value
+    const height = +fields.height.value
     const offsetX = +fields['offset-x'].value
     const offsetY = +fields['offset-y'].value
     return { palette, iterationThreshold, scale, width, height, offsetX, offsetY }
@@ -178,9 +178,9 @@ class SetFormElement extends HTMLElement {
     const fields = this.fields
     form.querySelector(`[data-id=palette-${palette}]`).checked = true
     fields['iteration-threshold'].value = iterationThreshold
-    fields['scale'].value = scale
-    fields['width'].value = width
-    fields['height'].value = height
+    fields.scale.value = scale
+    fields.width.value = width
+    fields.height.value = height
     fields['offset-x'].value = offsetX
     fields['offset-y'].value = offsetY
   }

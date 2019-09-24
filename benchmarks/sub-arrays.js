@@ -4,7 +4,7 @@ const size = 200
 function testMultiArrays () {
   const array = new Array(size)
   for (let i = 0; i < size; ++i) {
-    array[i] = [ i + 1, i + 2, i + 3 ]
+    array[i] = [i + 1, i + 2, i + 3]
   }
 }
 

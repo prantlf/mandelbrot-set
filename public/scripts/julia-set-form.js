@@ -10,7 +10,7 @@ template.innerHTML = `<fieldset>
   <input data-id="k-i" type="number" value="0.4" step="any">
 </fieldset>`
 
-const fields = [ 'k-r', 'k-i' ]
+const fields = ['k-r', 'k-i']
 
 class JuliaSetFormElement extends SetFormElement {
   constructor () {
